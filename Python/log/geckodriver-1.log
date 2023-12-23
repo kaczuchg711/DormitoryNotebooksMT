@@ -1,0 +1,2 @@
+2023/12/23 23:28:11.217237 cmd_run.go:1055: WARNING: cannot start document portal: dial unix /run/user/1000/bus: connect: no such file or directory
+1703370491289	geckodriver	INFO	Listening on 127.0.0.1:32947
