@@ -1,0 +1,49 @@
+{% extends "main.html" %}
+{% load static %}
+{% block individual_head %}
+    <title>home</title>
+    <link rel="Stylesheet" type="text/css" href="{% static 'css/home.css' %}"/>
+{% endblock individual_head %}
+{% block content %}
+    <h2>Akademikowe zeszyty</h2>
+    <div class="container">
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <form id='change-organization-form' action={% url 'organization' %} method="post"> {% csrf_token %}
+                            <button id='change-organization-button' name='organization' class="btn bg-transparent ">
+                                <img class="img-fluid rounded mx-auto d-block" src="{% static  organizationLogoPath %}" alt="logo">
+                            </button>
+                        </form>
+                    </div>
+                    <div class="col-md-8 login-form">
+                        <form action={% url "login" %} method=POST>{% csrf_token %}
+                            <label>Akademik</label><br>
+                            {{ form.dorms }} <br>
+                            <label>email</label><br>
+                            {{ form.email }} <br>
+                            <label>hasło</label><br>
+                            {{ form.password }} <br>
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <p{% if message.tags %} class="{{ message.tags }} "
+                                                            style="color: #ff0000" {% endif %}>{{ message }}</p>
+                                {% endfor %}
+                            {% endif %}
+
+                            <input type="submit" value="Submit" name="submit">
+                        </form>
+                        <br>
+                        <div class="registration_blue_bar">
+                            <form action={% url "registration" %}>
+                                <p>Nie masz konta ?</p>
+                                <button>Zarejestruj</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock content %}

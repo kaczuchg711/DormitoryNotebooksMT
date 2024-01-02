@@ -12,10 +12,6 @@ public class HelloWorld {
 
     @GetMapping("/")
     public String sayHello() {
-        TestDbTable a = new TestDbTable();
         return "Kocham Kamilcie";
     }
-
-
-
 }
