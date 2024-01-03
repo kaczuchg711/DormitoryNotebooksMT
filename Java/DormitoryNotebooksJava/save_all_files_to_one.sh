@@ -20,7 +20,7 @@ fi
 > "$OUTPUT_FILE"
 
 # Concatenate all files from directory and subdirectories
-find "$DIR" -type f | while read -r file; do
+find "$DIR" -type f \( -name "*.txt" -o -name "*.java" -o -name "*.sh" -o -name "*.properties" -o -name "*.md" \) | while read -r file; do
     echo "---- Content of $file ----" >> "all_files.txt"
     cat "$file" >> "all_files.txt"
     echo -e "\n" >> "all_files.txt"
