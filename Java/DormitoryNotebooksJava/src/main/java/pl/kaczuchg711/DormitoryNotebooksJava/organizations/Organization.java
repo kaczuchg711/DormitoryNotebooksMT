@@ -29,4 +29,8 @@ public class Organization {
     public void setAcronym(String acronym) {
         this.acronym = acronym;
     }
+
+    public Integer getId() {
+        return id;
+    }
 }

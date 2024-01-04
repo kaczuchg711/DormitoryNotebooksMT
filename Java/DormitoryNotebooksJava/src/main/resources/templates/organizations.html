@@ -19,16 +19,15 @@
         Wybierz Organizację
     </h2>
     <section>
-        <div class="row" >
+        <div class="row">
             <div class="col-sm-4" th:each="organization : ${organizations}">
-                <form action="/set_organization/" method="post"><input type="hidden">
-                    <button th:value="${organization.acronym}" name="organization" class="btn bg-transparent ">
-                        <img th:src="@{/img/{acronym}_logo.png(acronym=${organization.acronym})}" th:alt="${organization.acronym}" >
+                <form action="/set_organization" method="post">
+                    <button th:value="${organization.acronym}" name="organization" class="btn bg-transparent">
+                        <img th:src="@{/img/{acronym}_logo.png(acronym=${organization.acronym})}" th:alt="${organization.acronym}">
                     </button>
                 </form>
             </div>
         </div>
-    </section>
 </div>
 
 <!--            <div class="col-sm-4">-->
@@ -39,9 +38,6 @@
 <!--                    </button>-->
 <!--                </form>-->
 <!--            </div>-->
-
-
-
 
 
 <script src="js/jquery-3.5.1.slim.min.js"
