@@ -9,28 +9,16 @@
 
     <link rel="Stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="Stylesheet" type="text/css" href="css/main.css">
-    <link rel="Stylesheet" type="text/css" href="css/organization.css">
+    <link rel="Stylesheet" type="text/css" href="css/login.css">
 
-    <title>organization</title>
+    <title>login</title>
 </head>
 <body>
 <div class="container">
-    <h2>
-        Wybierz Organizację
-    </h2>
-    <section>
-        <div class="row">
-            <div class="col-sm-4" th:each="organization : ${organizations}">
-                <form action="/set_organization" method="post">
-                    <button th:value="${organization.acronym}" name="organization" class="btn bg-transparent">
-                        <img th:src="@{/img/{acronym}_logo.png(acronym=${organization.acronym})}" th:alt="${organization.acronym}">
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
+    bla bla bla
 </div>
-a
+
+
 <script src="js/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
