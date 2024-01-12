@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
-<head th:replace="layout :: common-head('login','login')"></head>
+<head th:replace="~{layout :: common-head('login','login')}"></head>
 <body>
 <div class="container">
     <section>
@@ -28,8 +28,8 @@
                         </select>
                     <form th:action="@{/login}" method="post">
                         <div>
-                            <label for="email">email:</label><br>
-                            <input type="text" id="email" name="username" placeholder="email" required>
+                            <label for="username">email:</label><br>
+                            <input type="text" id="username" name="username" placeholder="email" required>
                         </div>
                         <div>
                             <label for="password">hasło:</label><br>
@@ -53,6 +53,6 @@
 </div>
 
 
-<div th:replace="layout :: common-scripts"></div>
+<div th:replace="~{layout :: common-scripts}"></div>
 </body>
 </html>

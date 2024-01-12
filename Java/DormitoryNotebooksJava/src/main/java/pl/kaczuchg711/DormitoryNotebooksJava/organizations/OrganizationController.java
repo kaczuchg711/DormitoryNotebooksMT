@@ -3,7 +3,6 @@ package pl.kaczuchg711.DormitoryNotebooksJava.organizations;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,8 +11,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import pl.kaczuchg711.DormitoryNotebooksJava.security.User;
-import pl.kaczuchg711.DormitoryNotebooksJava.security.UserRepository;
+import pl.kaczuchg711.DormitoryNotebooksJava.security.Role;
 
+import pl.kaczuchg711.DormitoryNotebooksJava.security.UserRepository;
+import pl.kaczuchg711.DormitoryNotebooksJava.security.WebSecurityConfig;
+
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,11 +34,18 @@ public class OrganizationController {
 
     @GetMapping("/create_test")  // Map this method to handle requests to /organizations
     public ModelAndView fun(Model model) {
-        pl.kaczuchg711.DormitoryNotebooksJava.security.User user = new pl.kaczuchg711.DormitoryNotebooksJava.security.User();
+        User user = new User();
         user.setUsername("testuser");
+        passwordEncoder = WebSecurityConfig.passwordEncoder();
         user.setPassword(passwordEncoder.encode("testpassword"));
-        // Set other necessary fields like roles, etc.
+        Role userRole = new Role();
+        userRole.setName("ROLE_USER");
+
         userRepository.save(user);
+
+        Collection<Role> roles = new HashSet<>();
+        roles.add(userRole);
+        user.setAuthorities(roles);
 
         return new ModelAndView("redirect:/login");
     }
