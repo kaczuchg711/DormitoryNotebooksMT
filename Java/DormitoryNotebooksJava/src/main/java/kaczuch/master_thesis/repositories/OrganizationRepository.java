@@ -1,5 +1,6 @@
-package pl.kaczuchg711.DormitoryNotebooksJava.organizations;
+package kaczuch.master_thesis.repositories;
 
+import kaczuch.master_thesis.model.Organization;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

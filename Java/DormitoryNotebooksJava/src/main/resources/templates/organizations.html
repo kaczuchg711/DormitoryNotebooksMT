@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="layout :: common-head('Organizations','organization')">
+<head th:replace="~{layout :: common-head('Organizations','organization')}">
     <link rel="Stylesheet" type="text/css" href="css/organizations.css"> <!-- Specific stylesheet -->
 </head>
 <body>
@@ -20,6 +20,6 @@
         </div>
     </section>
 </div>
-<div th:replace="layout :: common-scripts"></div>
+<div th:replace="~{layout :: common-scripts}"></div>
 </body>
 </html>

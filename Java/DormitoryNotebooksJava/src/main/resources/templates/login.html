@@ -1,58 +1,48 @@
 <!DOCTYPE html>
-<html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head th:replace="~{layout :: common-head('login','login')}"></head>
+
 <body>
+<p th:text=${attributeName}></p>
+
 <div class="container">
     <section>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <img th:src="@{/img/{acronym}_logo.png(acronym=${organization_acronym})}" th:alt="${organization_acronym}">
-                </div>
-                <div class="col-md-8 login-form">
-                    <div th:if="${param.error}">
-                        Invalid username and password.
-                    </div>
-                    <div th:if="${param.logout}">
-                        You have been logged out.
-                    </div>
-
-                        <input type="hidden" name="_csrf" value="${_csrf.token}" />
-
-                        <label>Akademik</label><br>
-                        <select name="dorms" id="dorms">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                        </select>
-                    <form th:action="@{/login}" method="post">
-                        <div>
-                            <label for="username">email:</label><br>
-                            <input type="text" id="username" name="username" placeholder="email" required>
-                        </div>
-                        <div>
-                            <label for="password">hasło:</label><br>
-                            <input type="password" id="password" name="password" placeholder="Password" required>
-                        </div>
-                        <div>
-                            <button type="submit">Login</button>
-                        </div>
-                    </form>
-                    <br>
-                    <div class="registration_blue_bar">
-                        <form method=POST>
-                            <p>Nie masz konta ?</p>
-                            <button>Zarejestruj</button>
-                        </form>
-                    </div>
-                </div>
+        <div class="row">
+            <div class="col-md-8">
+                <form id="change-organization-form" th:action="@{/organizations}" method="get"><input type="hidden" name="csrfmiddlewaretoken" value="mTaPDLcyuCdX7Vo7fxmU7kMwPNrH2ItbP6BCrz31eLygBVO5lQknIDnxT6tdVssG">
+                    <button id="change-organization-button" name="organization" class="btn bg-transparent ">
+                        <img class="img-fluid rounded mx-auto d-block" th:src="@{/img/{acronym}_logo.png(acronym=${organization_acronym})}" th:alt="${organization_acronym}">
+                    </button>
+                </form>
             </div>
+            <div class="col-md-8 login-form">
+                <label>Akademik</label><br>
+                <select name="dorms" id="dorms">
+                    <option th:each="dorm : ${dormNames}" th:text="${dorm}" value="${dorm}"></option>
+                </select>
+                <form th:action="@{/login}" method="post">
+                    <div class="message" th:if="${param.error}">
+                        Invalid Username or Password
+                    </div>
+                    <div class="message" th:if="${param.logout}">
+                        Logout Successfuly
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Email:</label><br>
+                        <input type="email" id="username" name="username" placeholder="Enter your email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password:</label><br>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    </div>
+                    <input type="submit" value="Log in">
+                </form>
+            </div>
+
         </div>
     </section>
+
 </div>
-
-
-<div th:replace="~{layout :: common-scripts}"></div>
 </body>
 </html>

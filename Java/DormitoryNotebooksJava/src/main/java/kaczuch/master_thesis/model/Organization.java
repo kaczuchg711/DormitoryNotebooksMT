@@ -1,0 +1,67 @@
+package kaczuch.master_thesis.model;
+
+
+import jakarta.persistence.*;
+
+import java.util.Set;
+
+@Entity
+public class Organization {
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Long id;
+    private String name;
+    private String acronym;
+
+    @ManyToMany
+    @JoinTable(
+            name = "organization_dorm",
+            joinColumns = @JoinColumn(name = "organization_id"),
+            inverseJoinColumns = @JoinColumn(name = "dorm_id")
+    )
+    private Set<Dorm> dorms;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAcronym() {
+        return acronym;
+    }
+
+    public void setAcronym(String acronym) {
+        this.acronym = acronym;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
+    public Set<Dorm> getDorms() {
+        return dorms;
+    }
+
+    public void setDorms(Set<Dorm> dorms) {
+        this.dorms = dorms;
+    }
+
+    // Add methods to add and remove Dorms
+    public void addDorm(Dorm dorm) {
+        dorms.add(dorm);
+        dorm.getOrganizations().add(this);
+    }
+
+    public void removeDorm(Dorm dorm) {
+        dorms.remove(dorm);
+        dorm.getOrganizations().remove(this);
+    }
+}
+

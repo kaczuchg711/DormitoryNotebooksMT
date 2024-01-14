@@ -1,0 +1,7 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="~{layout :: common-head('login','login')}"></head>
+<body>
+<h2>Welcome, [[${user.getFullname()}]]</h2>
+<div th:replace="~{layout :: common-scripts}"></div>
+</body>
