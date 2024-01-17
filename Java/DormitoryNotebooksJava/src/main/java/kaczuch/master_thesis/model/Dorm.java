@@ -12,25 +12,15 @@ public class Dorm {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-
     @ManyToMany(mappedBy = "dorms")
     private Set<Organization> organizations;
-
-    @OneToMany(mappedBy = "dorm")
+    @ManyToMany(mappedBy = "dorms")
     private Set<User> users = new HashSet<>();
-
 
     public Set<Organization> getOrganizations() {
         return organizations;
     }
 
-    public Set<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(Set<User> users) {
-        this.users = users;
-    }
 
     public void setOrganizations(Set<Organization> organizations) {
         this.organizations = organizations;

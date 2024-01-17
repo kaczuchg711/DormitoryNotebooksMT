@@ -16,11 +16,11 @@
                 </form>
             </div>
             <div class="col-md-8 login-form">
+                <form th:action="@{/login}" method="post">
                 <label>Akademik</label><br>
                 <select name="dorms" id="dorms">
-                    <option th:each="dorm : ${dormNames}" th:text="${dorm}" value="${dorm}"></option>
+                    <option th:each="dorm : ${dormNames}" th:text="${dorm}" th:value="${dorm}"></option>
                 </select>
-                <form th:action="@{/login}" method="post">
                     <div class="message" th:if="${param.error}">
                         Invalid Username or Password
                     </div>

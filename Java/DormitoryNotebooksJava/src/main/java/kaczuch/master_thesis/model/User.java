@@ -2,90 +2,105 @@ package kaczuch.master_thesis.model;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class User {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	
-	private String email;
-	private String password;
-	private String role;
-	private String fullname;
 
-	@ManyToOne
-	@JoinColumn(name = "dorm_id") // foreign key in the User table
-	private Dorm dorm;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-	public Dorm getDorm() {
-		return dorm;
-	}
+    private String email;
+    private String password;
+    private String role;
+    private String fullname;
+    @ManyToMany
+    @JoinTable(
+            name = "user_organization",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "organization_id")
+    )
+    private Set<Organization> organizations = new HashSet<>();
+    ;
+    @ManyToMany
+    @JoinTable(
+            name = "user_dorm",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "dorm_id")
+    )
+    private Set<Dorm> dorms = new HashSet<>();
+    ;
 
-	public void setDorm(Dorm dorm) {
-		this.dorm = dorm;
-	}
+    public Set<Organization> getOrganizations() {
+        return organizations;
+    }
 
-	public User() {
-		super();
-	}
+    public void setOrganizations(Set<Organization> organizations) {
+        this.organizations = organizations;
+    }
 
-	public User(String email, String password, String role, String fullname) {
-		
-		this.email = email;
-		this.password = password;
-		this.role = role;
-		this.fullname = fullname;
-	}
+    public Set<Dorm> getDorms() {
+        return dorms;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public void setDorms(Set<Dorm> dorms) {
+        this.dorms = dorms;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public User() {
+        super();
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public User(String email, String password, String role, String fullname) {
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.fullname = fullname;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getRole() {
-		return role;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setRole(String role) {
-		this.role = role;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public String getFullname() {
-		return fullname;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public void setFullname(String fullname) {
-		this.fullname = fullname;
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
+    }
+
 
 }

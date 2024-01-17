@@ -3,6 +3,7 @@ package kaczuch.master_thesis.model;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -21,6 +22,9 @@ public class Organization {
             inverseJoinColumns = @JoinColumn(name = "dorm_id")
     )
     private Set<Dorm> dorms;
+
+    @ManyToMany(mappedBy = "organizations")
+    private Set<User> users = new HashSet<>();
 
     public String getName() {
         return name;
