@@ -53,38 +53,45 @@ public class UserController {
 		return "register";
 	}
 
-	@GetMapping({"/login", "/"})
+	@GetMapping({"/login_page", "/"})
 	public String login(Model model, HttpSession session, RedirectAttributes redirectAttributes, HttpServletRequest request) {
-		String organization_acronym = (String) session.getAttribute("organization_acronym");
-		if (organization_acronym == null) {
-			// Add a flash attribute to indicate the redirection
-			redirectAttributes.addFlashAttribute("redirect", true);
-			return "redirect:/organizations"; // Redirect to organizations page
-		}
 
+		Optional<Organization> organization = check_organization_choice(model, session, redirectAttributes);
+		if (organization == null) return "redirect:/organizations";
 
-		model.addAttribute("organization_acronym", organization_acronym);
-
-		Optional<Organization> organization = organizationService.findByAcronym(organization_acronym);
-		if (organization.isPresent()) {
-			Set<Dorm> dorms = organization.get().getDorms();
-			List<String> dormNames = dorms.stream()
-					.map(Dorm::getName)
-					.collect(Collectors.toList());
-
-			model.addAttribute("dormNames", dormNames); // Add dorm names to the model
-		} else {
-			// Handle the case where the organization is not found
-			redirectAttributes.addFlashAttribute("error", "Organization not found.");
-			return "redirect:/organizations";
-		}
+		get_dorms_assigned_to_organization(model, organization);
 
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String dormName = request.getParameter("dorms");
 
-		return "login";
+		return "login_page";
 	}
+
+	private static void get_dorms_assigned_to_organization(Model model, Optional<Organization> organization) {
+		Set<Dorm> dorms = organization.get().getDorms();
+		List<String> dormNames = dorms.stream()
+				.map(Dorm::getName)
+				.collect(Collectors.toList());
+
+		model.addAttribute("dormNames", dormNames);
+	}
+
+	private Optional<Organization> check_organization_choice(Model model, HttpSession session, RedirectAttributes redirectAttributes) {
+		String organization_acronym = (String) session.getAttribute("organization_acronym");
+		if (organization_acronym == null ) {
+			redirectAttributes.addFlashAttribute("redirect", true);
+			return null;
+		}
+		model.addAttribute("organization_acronym", organization_acronym);
+		Optional<Organization> organization = organizationService.findByAcronym(organization_acronym);
+		if (! organization.isPresent()) {
+			redirectAttributes.addFlashAttribute("error", "Organization not found.");
+			return null;
+		}
+		return organization;
+	}
+
 	@GetMapping("/organizations")  // Map this method to handle requests to /organizations
 	public String handleOrganizationsUrlRequest(Model model) {
 		List<Organization> organizations = organizationRepository.findAll();

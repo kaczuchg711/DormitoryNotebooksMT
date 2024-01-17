@@ -33,20 +33,28 @@ public class SecurityConfig {
 	
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
-		
+		String[] pagesNotRequireLogIn = {
+				"/css/**",
+				"/img/**",
+				"/js/**",
+				"/registration",
+				"/add_user_to_organization",
+				"/add_user_to_dorm",
+				"/set_organization",
+				"/organizations",
+				"/login_page"
+		};
+
 		http.csrf(c -> c.disable())
-		
 		.authorizeHttpRequests(request -> request.requestMatchers("/admin-page")
 				.hasAuthority("ADMIN").requestMatchers("/user-page").hasAuthority("USER")
-				.requestMatchers("/registration","/set_organization","/organizations", "/css/**", "/img/**", "/js/**").permitAll()
+				.requestMatchers(pagesNotRequireLogIn).permitAll()
 				.anyRequest().authenticated())
-		
-		.formLogin(form -> form.loginPage("/login").loginProcessingUrl("/login")
+		.formLogin(form -> form.loginPage("/login_page").loginProcessingUrl("/login")
 				.successHandler(customSuccessHandler).permitAll())
-
 		.logout(form -> form.invalidateHttpSession(true).clearAuthentication(true)
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-				.logoutSuccessUrl("/login?logout").permitAll());
+				.logoutSuccessUrl("/login_page").permitAll());
 		return http.build();
 		
 	}
