@@ -6,6 +6,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import jakarta.servlet.http.HttpServletRequest;
 import kaczuch.master_thesis.model.Dorm;
 import kaczuch.master_thesis.model.Organization;
 import kaczuch.master_thesis.repositories.OrganizationRepository;
@@ -53,13 +54,15 @@ public class UserController {
 	}
 
 	@GetMapping({"/login", "/"})
-	public String login(Model model, HttpSession session, RedirectAttributes redirectAttributes) {
+	public String login(Model model, HttpSession session, RedirectAttributes redirectAttributes, HttpServletRequest request) {
 		String organization_acronym = (String) session.getAttribute("organization_acronym");
 		if (organization_acronym == null) {
 			// Add a flash attribute to indicate the redirection
 			redirectAttributes.addFlashAttribute("redirect", true);
 			return "redirect:/organizations"; // Redirect to organizations page
 		}
+
+
 		model.addAttribute("organization_acronym", organization_acronym);
 
 		Optional<Organization> organization = organizationService.findByAcronym(organization_acronym);
@@ -75,6 +78,11 @@ public class UserController {
 			redirectAttributes.addFlashAttribute("error", "Organization not found.");
 			return "redirect:/organizations";
 		}
+
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		String dormName = request.getParameter("dorms");
+
 		return "login";
 	}
 	@GetMapping("/organizations")  // Map this method to handle requests to /organizations

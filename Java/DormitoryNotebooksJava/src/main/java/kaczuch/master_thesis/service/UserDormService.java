@@ -1,5 +1,6 @@
 package kaczuch.master_thesis.service;
 
+import jakarta.persistence.EntityNotFoundException;
 import kaczuch.master_thesis.model.Dorm;
 import kaczuch.master_thesis.model.User;
 import kaczuch.master_thesis.repositories.DormRepository;
@@ -22,6 +23,13 @@ public class UserDormService {
         this.userRepository = userRepository;
         this.organizationRepository = organizationRepository;
 
+    }
+
+    public boolean isUserAssignedToDorm(Long userId, Integer dormID) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new EntityNotFoundException("User not found"));
+        Dorm dorm = organizationRepository.findById(dormID).orElseThrow(() -> new EntityNotFoundException ("Dorm not found"));
+
+        return user.getDorms().contains(dorm);
     }
 
     @Transactional
