@@ -24,11 +24,17 @@ public class UserDormService {
         this.organizationRepository = organizationRepository;
 
     }
-
-    public boolean isUserAssignedToDorm(Long userId, Integer dormID) {
+    @Transactional
+    public boolean isUserAssignedToDorm(Long userId, Long dormID) {
+        System.out.println("CCCCCCCCCCCCCC");
         User user = userRepository.findById(userId).orElseThrow(() -> new EntityNotFoundException("User not found"));
+        System.out.println("DDDDDDDDDDDDDDDd");
         Dorm dorm = organizationRepository.findById(dormID).orElseThrow(() -> new EntityNotFoundException ("Dorm not found"));
-
+        System.out.println("EEEEEEEEEEEEEEEEe");
+        user.getDorms();
+        System.out.println("FFFFFFFFFFFFFFFFFf");
+        user.getDorms().contains(dorm);
+        System.out.println("GGGGGGGGGGGGGGGGGG");
         return user.getDorms().contains(dorm);
     }
 

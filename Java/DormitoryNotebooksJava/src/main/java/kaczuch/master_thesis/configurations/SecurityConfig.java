@@ -1,5 +1,6 @@
 package kaczuch.master_thesis.configurations;
 
+import kaczuch.master_thesis.service.OrganizationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,8 +18,9 @@ import kaczuch.master_thesis.service.CustomUserDetailsService;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-	
-	
+
+
+
 	@Autowired
 	CustomSuccessHandler customSuccessHandler;
 	

@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
-
 import jakarta.servlet.http.HttpServletRequest;
 import kaczuch.master_thesis.model.Dorm;
 import kaczuch.master_thesis.model.Organization;
@@ -26,13 +25,13 @@ import kaczuch.master_thesis.service.UserService;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
+import java.util.Map;
 @Controller
 public class UserController {
-	
+
 	@Autowired
 	UserDetailsService userDetailsService;
-	
+
 	@Autowired
 	private UserService userService;
 	@Autowired
@@ -45,7 +44,7 @@ public class UserController {
 	public String getRegistrationPage(@ModelAttribute("user") UserDto userDto) {
 		return "register";
 	}
-	
+
 	@PostMapping("/registration")
 	public String saveUser(@ModelAttribute("user") UserDto userDto, Model model) {
 		userService.save(userDto);
@@ -54,19 +53,24 @@ public class UserController {
 	}
 
 	@GetMapping({"/login_page", "/"})
-	public String login(Model model, HttpSession session, RedirectAttributes redirectAttributes, HttpServletRequest request) {
+	public String login_page(@RequestParam(name = "errorDorm", required = false) String errorDorm, Model model, HttpSession session, RedirectAttributes redirectAttributes, HttpServletRequest request) {
 
 		Optional<Organization> organization = check_organization_choice(model, session, redirectAttributes);
 		if (organization == null) return "redirect:/organizations";
 
 		get_dorms_assigned_to_organization(model, organization);
 
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		String dormName = request.getParameter("dorms");
-
+		if (errorDorm != null) {
+			model.addAttribute("errorDorm", errorDorm);
+		}
 		return "login_page";
 	}
+
+	@PostMapping("/login")
+	public String login(Model model, HttpSession session, RedirectAttributes redirectAttributes, HttpServletRequest request) {
+		return "user";
+	}
+
 
 	private static void get_dorms_assigned_to_organization(Model model, Optional<Organization> organization) {
 		Set<Dorm> dorms = organization.get().getDorms();
@@ -79,13 +83,13 @@ public class UserController {
 
 	private Optional<Organization> check_organization_choice(Model model, HttpSession session, RedirectAttributes redirectAttributes) {
 		String organization_acronym = (String) session.getAttribute("organization_acronym");
-		if (organization_acronym == null ) {
+		if (organization_acronym == null) {
 			redirectAttributes.addFlashAttribute("redirect", true);
 			return null;
 		}
 		model.addAttribute("organization_acronym", organization_acronym);
 		Optional<Organization> organization = organizationService.findByAcronym(organization_acronym);
-		if (! organization.isPresent()) {
+		if (!organization.isPresent()) {
 			redirectAttributes.addFlashAttribute("error", "Organization not found.");
 			return null;
 		}
@@ -110,16 +114,34 @@ public class UserController {
 			return new ModelAndView("redirect:/organization");
 		}
 	}
-	
+
 	@GetMapping("user-page")
-	public String userPage (Model model, Principal principal) {
+	public String userPage(Model model, Principal principal, HttpServletRequest request) {
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+
+
+		Map<String, String[]> parameters = request.getParameterMap();
+		for (Map.Entry<String, String[]> entry : parameters.entrySet()) {
+			String paramName = entry.getKey();
+			String[] paramValues = entry.getValue();
+
+			// Przetwarzanie każdej wartości parametru
+			for (String value : paramValues) {
+				System.out.println("Parametr: " + paramName + ", Wartość: " + value);
+			}
+		}
+
+
+
 		UserDetails userDetails = userDetailsService.loadUserByUsername(principal.getName());
 		model.addAttribute("user", userDetails);
 		return "user";
 	}
-	
+
 	@GetMapping("admin-page")
-	public String adminPage (Model model, Principal principal) {
+	public String adminPage(Model model, Principal principal) {
+
 		UserDetails userDetails = userDetailsService.loadUserByUsername(principal.getName());
 		model.addAttribute("user", userDetails);
 		return "admin";
