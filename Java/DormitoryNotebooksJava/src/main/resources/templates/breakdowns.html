@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="~{layout :: common-head('Awarie','breakdowns')}"></head>
+<body>
+
+<h2>Awarie</h2>
+<div class="table_container">
+    <table class="table table-striped text-center">
+        <thead>
+        <tr>
+            <th scope="col">data</th>
+            <th scope="col">imię</th>
+            <th scope="col">nazwisko</th>
+            <th scope="col">numer pokoju</th>
+            <th scope="col">opis</th>
+            <th scope="col">stan</th>
+            <th scope="col">usuń awarie</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="breakdown : ${data}">
+            <td th:text="${breakdown.requestDate}">2024-01-03</td>
+            <td th:text="${breakdown.firstName}"></td>
+            <td th:text="${breakdown.lastName}"></td>
+            <td th:text="${breakdown.roomNumber}">None</td>
+            <td th:text="${breakdown.description}"></td>
+            <td th:text="${breakdown.isSolved ? 'usunięta' : 'nieusunięta'}">usunięta</td>
+            <td>
+                <form th:action="@{/remove_breakdown/}" method="post">
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                    <input type="hidden" th:name="id" th:value="${breakdown.id}"/>
+                    <button type="submit">x</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<section>
+    <div class="row">
+        <div class="col-sm-12" style="text-align: center">
+            <form class="align-items-center center-div" method="post"
+                  action=/request_breakdown/><input type="hidden" name="csrfmiddlewaretoken" value="XP3qScYH5ovw3Hwor9PszPyQH1ZcnAv3Sa4R4Ifv00ljpPnRyvv3w1F5IZsGMPI1">
+                <input type="text" name="description" style="width:40%" placeholder="Opis awarii" required id="id_description">
+                <br>
+                <button type="submit" name="submit">Zgłoś awarię</button>
+            </form>
+        </div>
+    </div>
+</section>
+<div th:replace="~{layout :: common-scripts}"></div>
+</body>
+</html>

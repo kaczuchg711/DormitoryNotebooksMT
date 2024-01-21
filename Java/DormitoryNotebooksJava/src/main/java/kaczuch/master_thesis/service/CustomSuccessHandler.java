@@ -30,18 +30,12 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
         String dormName = request.getParameter("dorm");
 
         Optional<Dorm> dorm = dormService.getDormByName(dormName);
-        System.out.println(dormName);
-        System.out.println(dorm.isPresent());
-        System.out.println(authentication.getPrincipal());
 
         if (dorm.isPresent() && authentication.getPrincipal() instanceof CustomUserDetail) {
-            System.out.println("if (dorm.isPresent() && authentication.getPrincipal() instanceof CustomUserDetail) {");
             CustomUserDetail user = (CustomUserDetail) authentication.getPrincipal();
-            System.out.println("AAAAAAAAAAAAAAAAAABBBBBBBBBBBBBB");
             Long dormID = dorm.get().getId();
 
             if (!userDormService.isUserAssignedToDorm(user.getId(), dormID)) {
-                System.out.println("   if (!userDormService.isUserAssignedToDorm(user.getId(), dormID)) {");
                 response.sendRedirect("/login_page?errorDorm=User is not assigned to this dorm");
                 return;
             }
@@ -57,12 +51,10 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
     private static void redirect_depend_on_role(HttpServletResponse response, Authentication authentication) throws IOException {
         var authourities = authentication.getAuthorities();
         var roles = authourities.stream().map(r -> r.getAuthority()).findFirst();
-
-
         if (roles.orElse("").equals("ADMIN")) {
             response.sendRedirect("/admin-page");
         } else if (roles.orElse("").equals("USER")) {
-            response.sendRedirect("/user-page");
+            response.sendRedirect("/user_dashboard");
         } else {
             response.sendRedirect("/error");
         }

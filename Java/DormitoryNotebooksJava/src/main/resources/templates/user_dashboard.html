@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="~{layout :: common-head('dashboard','dashboard')}"></head>
+<body>
+<h2>Witaj, [[${user.getFirstName()}]]<br>Co chcesz zrobić ?</h2>
+<section class="home_buttons">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <form th:action="@{/breakdowns}" method="post">
+                    <button class="home-button">Zgłosić usterkę</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<div th:replace="~{layout :: common-scripts}"></div>
+</body>

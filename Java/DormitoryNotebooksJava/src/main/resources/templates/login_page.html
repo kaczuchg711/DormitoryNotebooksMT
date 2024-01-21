@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="pl" xmlns:th="http://www.w3.org/1999/xhtml">
 <head th:replace="~{layout :: common-head('login','login')}"></head>
 
 <body>
@@ -21,7 +21,7 @@
                 <form th:action="@{/login}" method="post">
                 <label>Akademik</label><br>
                 <select name="dorm" id="dorm">
-                    <option th:each="dorm : ${dormNames}" th:text="${dorm}" th:value="${dorm}"></option>
+                    <option th:id="${dorm}" th:each="dorm : ${dormNames}" th:text="${dorm}" th:value="${dorm}"></option>
                 </select>
                     <div class="message" th:if="${param.logout}">
                         Logout Successfuly

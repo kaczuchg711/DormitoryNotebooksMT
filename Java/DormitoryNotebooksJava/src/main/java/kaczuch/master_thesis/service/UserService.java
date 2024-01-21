@@ -1,11 +1,12 @@
 package kaczuch.master_thesis.service;
 
 import kaczuch.master_thesis.dto.UserDto;
+import kaczuch.master_thesis.model.Breakdown;
 import kaczuch.master_thesis.model.User;
 
-public interface UserService {
-	
-	User save (UserDto userDto);
-	
+import java.util.Optional;
 
+public interface UserService {
+	User save(UserDto userDto);
+	Optional<User> findById(Long id);
 }

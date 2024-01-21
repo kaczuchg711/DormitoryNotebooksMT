@@ -21,7 +21,6 @@ public class DormOrganizationService {
     public DormOrganizationService(DormRepository dormRepository, OrganizationRepository organizationRepository) {
         this.dormRepository = dormRepository;
         this.organizationRepository = organizationRepository;
-
     }
 
     @Transactional
@@ -35,7 +34,7 @@ public class DormOrganizationService {
             // Save the updated dorm entity
             dormRepository.save(dorm);
         } else {
-            // Handle the scenario where the association already exists
+
         }
     }
 }

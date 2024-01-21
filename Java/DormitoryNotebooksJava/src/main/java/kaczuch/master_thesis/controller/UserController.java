@@ -6,6 +6,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 import jakarta.servlet.http.HttpServletRequest;
+import kaczuch.master_thesis.AuxiliaryFuns;
 import kaczuch.master_thesis.model.Dorm;
 import kaczuch.master_thesis.model.Organization;
 import kaczuch.master_thesis.repositories.OrganizationRepository;
@@ -25,7 +26,7 @@ import kaczuch.master_thesis.service.UserService;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import java.util.Map;
+
 @Controller
 public class UserController {
 
@@ -68,7 +69,7 @@ public class UserController {
 
 	@PostMapping("/login")
 	public String login(Model model, HttpSession session, RedirectAttributes redirectAttributes, HttpServletRequest request) {
-		return "user";
+		return "user_dashboard";
 	}
 
 
@@ -115,29 +116,21 @@ public class UserController {
 		}
 	}
 
-	@GetMapping("user-page")
+	@GetMapping("user_dashboard")
 	public String userPage(Model model, Principal principal, HttpServletRequest request) {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 
 
-		Map<String, String[]> parameters = request.getParameterMap();
-		for (Map.Entry<String, String[]> entry : parameters.entrySet()) {
-			String paramName = entry.getKey();
-			String[] paramValues = entry.getValue();
-
-			// Przetwarzanie każdej wartości parametru
-			for (String value : paramValues) {
-				System.out.println("Parametr: " + paramName + ", Wartość: " + value);
-			}
-		}
-
+		AuxiliaryFuns.showAllParametersInRequest(request);
 
 
 		UserDetails userDetails = userDetailsService.loadUserByUsername(principal.getName());
 		model.addAttribute("user", userDetails);
-		return "user";
+		return "user_dashboard";
 	}
+
+
 
 	@GetMapping("admin-page")
 	public String adminPage(Model model, Principal principal) {

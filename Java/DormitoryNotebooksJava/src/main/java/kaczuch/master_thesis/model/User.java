@@ -12,11 +12,54 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     private String email;
     private String password;
     private String role;
-    private String fullname;
+    private String first_name;
+    private String last_name;
+    @Column(columnDefinition = "VARCHAR(10)")
+    private Integer roomNumber;
+
+    public String getFirst_name() {
+        return first_name;
+    }
+
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
+    }
+
+    public String getLast_name() {
+        return last_name;
+    }
+
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
+    }
+
+    public Integer getRoomNumber() {
+        return roomNumber;
+    }
+
+    public void setRoomNumber(Integer roomNumber) {
+        this.roomNumber = roomNumber;
+    }
+
+    public String getFirstName() {
+        return first_name;
+    }
+
+    public void setFirstName(String first_name) {
+        this.first_name = first_name;
+    }
+
+    public String getLastName() {
+        return last_name;
+    }
+
+    public void setLastName(String last_name) {
+        this.last_name = last_name;
+    }
+
     @ManyToMany
     @JoinTable(
             name = "user_organization",
@@ -54,12 +97,22 @@ public class User {
         super();
     }
 
-    public User(String email, String password, String role, String fullname) {
-
+    public User(String email, String password, String role, String first_name, String last_name) {
         this.email = email;
         this.password = password;
         this.role = role;
-        this.fullname = fullname;
+        this.first_name = first_name;
+        this.last_name = last_name;
+    }
+
+    public User(Long id, String email, String password, String role, String first_name, String last_name, Set<Organization> organizations, Set<Dorm> dorms) {
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.organizations = organizations;
+        this.dorms = dorms;
     }
 
     public Long getId() {
@@ -93,14 +146,5 @@ public class User {
     public void setRole(String role) {
         this.role = role;
     }
-
-    public String getFullname() {
-        return fullname;
-    }
-
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
-    }
-
 
 }

@@ -1,6 +1,5 @@
 package kaczuch.master_thesis.controller;
 
-
 import kaczuch.master_thesis.service.UserDormService;
 import kaczuch.master_thesis.service.UserOrganizationService;
 import org.springframework.beans.factory.annotation.Autowired;
