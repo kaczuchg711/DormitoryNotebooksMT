@@ -26,11 +26,11 @@
             <td th:text="${breakdown.description}"></td>
             <td th:text="${breakdown.isSolved ? 'usunięta' : 'nieusunięta'}">usunięta</td>
             <td>
-                <form th:action="@{/remove_breakdown/}" method="post">
-                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
-                    <input type="hidden" th:name="id" th:value="${breakdown.id}"/>
-                    <button type="submit">x</button>
-                </form>
+<!--                <form th:action="@{/remove_breakdown/}" method="post">-->
+<!--                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>-->
+<!--                    <input type="hidden" th:name="id" th:value="${breakdown.id}"/>-->
+<!--                    <button type="submit">x</button>-->
+<!--                </form>-->
             </td>
         </tr>
         </tbody>

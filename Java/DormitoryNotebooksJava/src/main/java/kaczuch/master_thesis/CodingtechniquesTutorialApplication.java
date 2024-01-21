@@ -11,7 +11,7 @@ public class CodingtechniquesTutorialApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(CodingtechniquesTutorialApplication.class, args);
-        System.out.println("START server end\nSTART server end\nSTART server end\nSTART server end\nSTART server end\nSTART server end\nSTART server end\nSTART server end\nSTART server end\n");
+        System.out.println("START server end\nSTART server end\nSTART server end\nSTART server end\nSTART server end\nSTART server end\nSTART server end\nSTART server end\nSTART server end\n\n\n\n");
     }
 
 }

@@ -11,7 +11,11 @@ import kaczuch.master_thesis.model.User;
 public class CustomUserDetail implements UserDetails {
 	
 	private User user;
-	
+
+	public int getRoomNumber() {
+		return user.getRoomNumber();
+	}
+
 	public CustomUserDetail(User user) {
 		this.user = user;
 	}

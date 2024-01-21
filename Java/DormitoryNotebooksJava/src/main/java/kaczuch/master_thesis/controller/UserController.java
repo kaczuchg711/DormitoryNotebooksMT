@@ -11,6 +11,7 @@ import kaczuch.master_thesis.model.Dorm;
 import kaczuch.master_thesis.model.Organization;
 import kaczuch.master_thesis.repositories.OrganizationRepository;
 import jakarta.servlet.http.HttpSession;
+import kaczuch.master_thesis.service.CustomUserDetail;
 import kaczuch.master_thesis.service.OrganizationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -32,7 +33,6 @@ public class UserController {
 
 	@Autowired
 	UserDetailsService userDetailsService;
-
 	@Autowired
 	private UserService userService;
 	@Autowired

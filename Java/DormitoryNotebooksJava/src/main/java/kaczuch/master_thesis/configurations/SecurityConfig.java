@@ -44,7 +44,8 @@ public class SecurityConfig {
 				"/add_user_to_dorm",
 				"/set_organization",
 				"/organizations",
-				"/login_page"
+				"/login_page",
+				"/create_user"
 		};
 
 		http.csrf(c -> c.disable())

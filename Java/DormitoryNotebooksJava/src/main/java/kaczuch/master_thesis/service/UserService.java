@@ -1,7 +1,6 @@
 package kaczuch.master_thesis.service;
 
 import kaczuch.master_thesis.dto.UserDto;
-import kaczuch.master_thesis.model.Breakdown;
 import kaczuch.master_thesis.model.User;
 
 import java.util.Optional;

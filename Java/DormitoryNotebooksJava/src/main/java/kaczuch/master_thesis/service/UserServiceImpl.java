@@ -24,10 +24,11 @@ public class UserServiceImpl implements UserService {
         User user = new User(userDto.getEmail(), passwordEncoder.encode(userDto.getPassword()), userDto.getRole(), userDto.getFirst_name(), userDto.getLast_name());
         return userRepository.save(user);
     }
-    //eeeeee
+
     @Override
     public Optional<User> findById(Long id) {
-        return Optional.empty();
+        Optional<User> user = userRepository.findById(id);
+        return user;
     }
 
 }
