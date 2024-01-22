@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{layout :: common-head('Organizations','organization')}">
+<head th:replace="layout :: common-head('Organizations','organization')">
     <link rel="Stylesheet" type="text/css" href="css/organizations.css"> <!-- Specific stylesheet -->
 </head>
 <body>
@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-sm-4" th:each="organization : ${organizations}">
                 <form action="/set_organization" method="post">
-                    <button th:value="${organization.acronym}" th:id="${organization.acronym}"name="organization" class="btn bg-transparent">
+                    <button th:value="${organization.acronym}" name="organization" class="btn bg-transparent">
                         <img th:src="@{/img/{acronym}_logo.png(acronym=${organization.acronym})}" th:alt="${organization.acronym}">
                     </button>
                 </form>
@@ -20,6 +20,6 @@
         </div>
     </section>
 </div>
-<div th:replace="~{layout :: common-scripts}"></div>
+<div th:replace="layout :: common-scripts"></div>
 </body>
 </html>

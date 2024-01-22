@@ -13,7 +13,6 @@ def create_breakdown_view(request):
     # todo create buttons to set breakdown as removed
     breakdownData = _prepare_breakdown_data(request)
     form = BreakdownForm()
-
     context = {
         'breakdownData': breakdownData,
         'form': form,

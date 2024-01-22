@@ -14,7 +14,7 @@
             <th scope="col">numer pokoju</th>
             <th scope="col">opis</th>
             <th scope="col">stan</th>
-            <th scope="col">usuń awarie</th>
+            <th th:if="${isPorter}" scope="col">usuń awarie</th>
         </tr>
         </thead>
         <tbody>
@@ -24,13 +24,11 @@
             <td th:text="${breakdown.lastName}"></td>
             <td th:text="${breakdown.roomNumber}">None</td>
             <td th:text="${breakdown.description}"></td>
-            <td th:text="${breakdown.isSolved ? 'usunięta' : 'nieusunięta'}">usunięta</td>
-            <td>
-<!--                <form th:action="@{/remove_breakdown/}" method="post">-->
-<!--                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>-->
-<!--                    <input type="hidden" th:name="id" th:value="${breakdown.id}"/>-->
-<!--                    <button type="submit">x</button>-->
-<!--                </form>-->
+            <td th:text="${breakdown.isSolved ? 'usunięta' : 'nieusunięta'}"></td>
+            <td th:if="${isPorter}">
+                <form th:action="@{/remove_breakdown/}" method="post">
+                    <button type="submit">x</button>
+                </form>
             </td>
         </tr>
         </tbody>

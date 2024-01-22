@@ -47,6 +47,6 @@ public class AAATestController {
         User user = new User("b@b.com",encodedPassword,"USER","Jan","Nowak");
         userRepository.save(user);
         String referer = request.getHeader("Referer");
-        return "redirect:" + (referer != null ? referer : "/defaultPage");
+        return "redirect:" + (referer != null ? referer : "/organizations");
     }
 }

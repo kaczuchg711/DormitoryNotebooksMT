@@ -1,0 +1,17 @@
+2024/01/19 21:28:10.966238 cmd_run.go:1055: WARNING: cannot start document portal: dial unix /run/user/1000/bus: connect: no such file or directory
+1705696091037	geckodriver	INFO	Listening on 127.0.0.1:38299
+2024/01/19 21:28:20.896910 cmd_run.go:1055: WARNING: cannot start document portal: dial unix /run/user/1000/bus: connect: no such file or directory
+1705696100971	geckodriver	INFO	Listening on 127.0.0.1:39385
+2024/01/19 21:38:28.198541 cmd_run.go:1055: WARNING: cannot start document portal: dial unix /run/user/1000/bus: connect: no such file or directory
+1705696708268	geckodriver	INFO	Listening on 127.0.0.1:48105
+2024/01/19 21:39:16.984764 cmd_run.go:1055: WARNING: cannot start document portal: dial unix /run/user/1000/bus: connect: no such file or directory
+1705696757053	geckodriver	INFO	Listening on 127.0.0.1:43151
+2024/01/19 21:40:33.287035 cmd_run.go:1055: WARNING: cannot start document portal: dial unix /run/user/1000/bus: connect: no such file or directory
+1705696833365	geckodriver	INFO	Listening on 127.0.0.1:33859
+2024/01/19 21:40:54.461679 cmd_run.go:1055: WARNING: cannot start document portal: dial unix /run/user/1000/bus: connect: no such file or directory
+1705696854531	geckodriver	INFO	Listening on 127.0.0.1:44719
+2024/01/19 21:55:12.963524 cmd_run.go:1055: WARNING: cannot start document portal: dial unix /run/user/1000/bus: connect: no such file or directory
+1705697713033	geckodriver	INFO	Listening on 127.0.0.1:33701
+1705698177698	geckodriver	INFO	Listening on 127.0.0.1:34879
+/mnt/c/AAAMyPATH/geckodriver.exe: Invalid argument
+/mnt/c/AAAMyPATH/geckodriver.exe: Invalid argument

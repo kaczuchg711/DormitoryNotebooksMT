@@ -25,6 +25,10 @@ public class CustomUserDetail implements UserDetails {
 		// TODO Auto-generated method stub
 		return List.of(() -> user.getRole());
 	}
+
+	public String getRole() {
+		return user.getRole();
+	}
 	
 	public String getFirstName() {
 		return user.getFirstName();

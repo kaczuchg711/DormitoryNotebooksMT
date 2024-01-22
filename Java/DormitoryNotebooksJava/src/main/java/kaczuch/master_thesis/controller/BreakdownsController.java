@@ -6,15 +6,15 @@ import kaczuch.master_thesis.service.BreakdownService;
 import kaczuch.master_thesis.service.CustomUserDetail;
 import kaczuch.master_thesis.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Controller
@@ -45,14 +45,13 @@ public class BreakdownsController {
             map.put("userId", breakdown.getUser().getId());
 
 
+
             Optional<User> optionalUser = userService.findById(breakdown.getUser().getId());
-
-
             if (optionalUser.isPresent()) {
-                User user = optionalUser.get();
-                map.put("firstName", user.getFirstName());
-                map.put("lastName", user.getLastName());
-                map.put("roomNumber", user.getRoomNumber());
+                User user_reported_breakdown = optionalUser.get();
+                map.put("firstName", user_reported_breakdown.getFirstName());
+                map.put("lastName", user_reported_breakdown.getLastName());
+                map.put("roomNumber", user_reported_breakdown.getRoomNumber());
             }
             else
             {
@@ -63,7 +62,23 @@ public class BreakdownsController {
             return map;
         }).collect(Collectors.toList());
 
+
+
+        String loggedUserRole = null;
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.isAuthenticated()) {
+            Object principal = authentication.getPrincipal();
+            if (principal instanceof UserDetails) {
+                CustomUserDetail userDetails = (CustomUserDetail) principal;
+                loggedUserRole = userDetails.getRole();
+            }
+        }
+        boolean isPorter = Objects.equals(loggedUserRole, "PORTER");
+
+
+
         ModelAndView modelAndView = new ModelAndView("breakdowns");
+        modelAndView.addObject("isPorter", isPorter);
         modelAndView.addObject("data", breakdownData);
 
         return modelAndView;

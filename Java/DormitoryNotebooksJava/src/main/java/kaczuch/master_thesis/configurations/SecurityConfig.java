@@ -50,7 +50,7 @@ public class SecurityConfig {
 
 		http.csrf(c -> c.disable())
 		.authorizeHttpRequests(request -> request.requestMatchers("/admin-page")
-				.hasAuthority("ADMIN").requestMatchers("/user_dashboard","breakdowns").hasAuthority("USER")
+				.hasAuthority("ADMIN").requestMatchers("/user_dashboard","breakdowns").hasAnyAuthority("USER","PORTER")
 				.requestMatchers(pagesNotRequireLogIn).permitAll()
 				.anyRequest().authenticated())
 		.formLogin(form -> form.loginPage("/login_page").loginProcessingUrl("/login")

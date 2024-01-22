@@ -8,6 +8,7 @@
 <div class="container">
     <section>
         <div class="row">
+
             <div class="col-md-8">
                 <form id="change-organization-form" th:action="@{/organizations}" method="get"><input type="hidden" name="csrfmiddlewaretoken" value="mTaPDLcyuCdX7Vo7fxmU7kMwPNrH2ItbP6BCrz31eLygBVO5lQknIDnxT6tdVssG">
                     <button id="change-organization-button" name="organization" class="btn bg-transparent ">
@@ -15,9 +16,9 @@
                     </button>
                 </form>
             </div>
+
             <div class="col-md-8 login-form">
                 <div th:text="${errorDorm}"></div>
-
                 <form th:action="@{/login}" method="post">
                 <label>Akademik</label><br>
                 <select name="dorm" id="dorm">
@@ -30,7 +31,6 @@
                         <label for="username">Email:</label><br>
                         <input type="email" id="username" name="username" placeholder="Enter your email" required>
                     </div>
-
                     <div class="form-group">
                         <label for="password">Password:</label><br>
                         <input type="password" id="password" name="password" placeholder="Enter your password" required>

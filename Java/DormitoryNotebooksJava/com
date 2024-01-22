@@ -1,1 +1,2 @@
-./compile_and_runserver.sh & sleep 5 &&  /mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe /C python C:\\zzz\\programing\\JavaMagisterkaTests\\main.py
+./kill_the_spring.sh
+./compile_and_runserver.sh & sleep 5 &&  echo "\n" &  /mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe /C python C:\\zzz\\programing\\JavaMagisterkaRobot\\main.py

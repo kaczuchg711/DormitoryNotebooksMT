@@ -53,10 +53,10 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
         var roles = authourities.stream().map(r -> r.getAuthority()).findFirst();
         if (roles.orElse("").equals("ADMIN")) {
             response.sendRedirect("/admin-page");
-        } else if (roles.orElse("").equals("USER")) {
+        } else if (roles.orElse("").equals("USER") || (roles.orElse("").equals("PORTER"))) {
             response.sendRedirect("/user_dashboard");
         } else {
-            response.sendRedirect("/error");
+            response.sendRedirect("/login_page?error=wrong_redirect_depend_on_role");
         }
     }
 
