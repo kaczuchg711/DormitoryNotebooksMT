@@ -26,7 +26,8 @@
             <td th:text="${breakdown.description}"></td>
             <td th:text="${breakdown.isSolved ? 'usunięta' : 'nieusunięta'}"></td>
             <td th:if="${isPorter}">
-                <form th:action="@{/remove_breakdown/}" method="post">
+                <form th:action="@{/remove_breakdown}" method="post">
+                    <input type="hidden" name="breakdownId" th:value="${breakdown.id}">
                     <button type="submit">x</button>
                 </form>
             </td>

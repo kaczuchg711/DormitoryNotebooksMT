@@ -1,5 +1,6 @@
 package kaczuch.master_thesis.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
 import kaczuch.master_thesis.model.Breakdown;
 import kaczuch.master_thesis.model.User;
 import kaczuch.master_thesis.service.BreakdownService;
@@ -62,8 +63,6 @@ public class BreakdownsController {
             return map;
         }).collect(Collectors.toList());
 
-
-
         String loggedUserRole = null;
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.isAuthenticated()) {
@@ -75,13 +74,19 @@ public class BreakdownsController {
         }
         boolean isPorter = Objects.equals(loggedUserRole, "PORTER");
 
-
-
         ModelAndView modelAndView = new ModelAndView("breakdowns");
         modelAndView.addObject("isPorter", isPorter);
         modelAndView.addObject("data", breakdownData);
 
         return modelAndView;
+    }
+
+    @PostMapping("/remove_breakdown")
+    public ModelAndView remove_breakdown(HttpServletRequest request)
+    {
+        Long brakeDownIdToRemove = Long.valueOf(request.getParameter("breakdownId"));
+        breakdownService.deleteById(brakeDownIdToRemove);
+        return giveBreakdownView();
     }
 
 }

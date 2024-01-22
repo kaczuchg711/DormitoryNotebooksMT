@@ -5159,3 +5159,713 @@ org.springframework.expression.spel.SpelEvaluationException: EL1008E: Property o
 2024-01-22T18:56:23.726+01:00 DEBUG 11039 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : select b1_0.id,b1_0.description,b1_0.dorm_id,b1_0.is_solved,b1_0.request_date,b1_0.user_id from breakdowns b1_0
 2024-01-22T18:56:23.727+01:00 DEBUG 11039 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : select d1_0.id,d1_0.name from dorm d1_0 where d1_0.id=?
 2024-01-22T18:56:23.729+01:00 DEBUG 11039 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.id=?
+2024-01-22T20:28:26.049+01:00 DEBUG 11039 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : select o1_0.id,o1_0.acronym,o1_0.name from organization o1_0
+2024-01-22T20:28:27.251+01:00 DEBUG 11039 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : select o1_0.id,o1_0.acronym,o1_0.name from organization o1_0 where o1_0.acronym=?
+2024-01-22T20:28:27.286+01:00 DEBUG 11039 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : select o1_0.id,o1_0.acronym,o1_0.name from organization o1_0 where o1_0.acronym=?
+2024-01-22T20:28:27.288+01:00 DEBUG 11039 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : select d1_0.organization_id,d1_1.id,d1_1.name from organization_dorm d1_0 join dorm d1_1 on d1_1.id=d1_0.dorm_id where d1_0.organization_id=?
+2024-01-22T20:28:29.499+01:00 DEBUG 11039 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.email=?
+2024-01-22T20:28:29.574+01:00 DEBUG 11039 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : select d1_0.id,d1_0.name from dorm d1_0 where d1_0.name=?
+2024-01-22T20:28:29.577+01:00 DEBUG 11039 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.id=?
+2024-01-22T20:28:29.579+01:00 DEBUG 11039 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : select d1_0.id,d1_0.name from dorm d1_0 where d1_0.id=?
+2024-01-22T20:28:29.581+01:00 DEBUG 11039 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : select d1_0.user_id,d1_1.id,d1_1.name from user_dorm d1_0 join dorm d1_1 on d1_1.id=d1_0.dorm_id where d1_0.user_id=?
+2024-01-22T20:28:29.597+01:00 DEBUG 11039 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.email=?
+2024-01-22T20:28:30.247+01:00 DEBUG 11039 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : select b1_0.id,b1_0.description,b1_0.dorm_id,b1_0.is_solved,b1_0.request_date,b1_0.user_id from breakdowns b1_0
+2024-01-22T20:28:30.249+01:00 DEBUG 11039 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : select d1_0.id,d1_0.name from dorm d1_0 where d1_0.id=?
+2024-01-22T20:28:30.251+01:00 DEBUG 11039 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.id=?
+2024-01-22T20:28:31.157+01:00 DEBUG 11039 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.email=?
+2024-01-22T20:28:31.788+01:00 DEBUG 11039 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : select o1_0.id,o1_0.acronym,o1_0.name from organization o1_0 where o1_0.acronym=?
+2024-01-22T20:28:31.790+01:00 DEBUG 11039 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : select d1_0.organization_id,d1_1.id,d1_1.name from organization_dorm d1_0 join dorm d1_1 on d1_1.id=d1_0.dorm_id where d1_0.organization_id=?
+2024-01-22T20:28:33.679+01:00 DEBUG 11039 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.email=?
+2024-01-22T20:28:33.753+01:00 DEBUG 11039 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : select d1_0.id,d1_0.name from dorm d1_0 where d1_0.name=?
+2024-01-22T20:28:33.756+01:00 DEBUG 11039 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.id=?
+2024-01-22T20:28:33.759+01:00 DEBUG 11039 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : select d1_0.id,d1_0.name from dorm d1_0 where d1_0.id=?
+2024-01-22T20:28:33.760+01:00 DEBUG 11039 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : select d1_0.user_id,d1_1.id,d1_1.name from user_dorm d1_0 join dorm d1_1 on d1_1.id=d1_0.dorm_id where d1_0.user_id=?
+2024-01-22T20:28:33.778+01:00 DEBUG 11039 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : select o1_0.id,o1_0.acronym,o1_0.name from organization o1_0 where o1_0.acronym=?
+2024-01-22T20:28:33.779+01:00 DEBUG 11039 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : select d1_0.organization_id,d1_1.id,d1_1.name from organization_dorm d1_0 join dorm d1_1 on d1_1.id=d1_0.dorm_id where d1_0.organization_id=?
+2024-01-22T20:28:36.995+01:00 DEBUG 11039 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.email=?
+2024-01-22T20:28:37.068+01:00 DEBUG 11039 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : select d1_0.id,d1_0.name from dorm d1_0 where d1_0.name=?
+2024-01-22T20:28:37.070+01:00 DEBUG 11039 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.id=?
+2024-01-22T20:28:37.072+01:00 DEBUG 11039 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : select d1_0.id,d1_0.name from dorm d1_0 where d1_0.id=?
+2024-01-22T20:28:37.074+01:00 DEBUG 11039 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : select d1_0.user_id,d1_1.id,d1_1.name from user_dorm d1_0 join dorm d1_1 on d1_1.id=d1_0.dorm_id where d1_0.user_id=?
+2024-01-22T20:28:37.086+01:00 DEBUG 11039 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.email=?
+2024-01-22T20:28:37.794+01:00 DEBUG 11039 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : select b1_0.id,b1_0.description,b1_0.dorm_id,b1_0.is_solved,b1_0.request_date,b1_0.user_id from breakdowns b1_0
+2024-01-22T20:28:37.795+01:00 DEBUG 11039 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : select d1_0.id,d1_0.name from dorm d1_0 where d1_0.id=?
+2024-01-22T20:28:37.796+01:00 DEBUG 11039 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.id=?
+2024-01-22T21:22:13.180+01:00  INFO 16200 --- [restartedMain] k.m.CodingtechniquesTutorialApplication  : Starting CodingtechniquesTutorialApplication using Java 17.0.9 with PID 16200 (/home/tkacza2/AAA/programing/magisterka/Java/DormitoryNotebooksJava/target/classes started by tkacza2 in /home/tkacza2/AAA/programing/magisterka/Java/DormitoryNotebooksJava)
+2024-01-22T21:22:13.182+01:00  INFO 16200 --- [restartedMain] k.m.CodingtechniquesTutorialApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-01-22T21:22:13.218+01:00  INFO 16200 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-01-22T21:22:13.218+01:00  INFO 16200 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-01-22T21:22:13.642+01:00  INFO 16200 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-22T21:22:13.688+01:00  INFO 16200 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 42 ms. Found 4 JPA repository interfaces.
+2024-01-22T21:22:14.093+01:00  INFO 16200 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2024-01-22T21:22:14.099+01:00  INFO 16200 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-22T21:22:14.100+01:00  INFO 16200 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.12]
+2024-01-22T21:22:14.139+01:00  INFO 16200 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-22T21:22:14.140+01:00  INFO 16200 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 921 ms
+2024-01-22T21:22:14.261+01:00  INFO 16200 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-22T21:22:14.292+01:00  INFO 16200 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.7.Final
+2024-01-22T21:22:14.293+01:00  INFO 16200 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2024-01-22T21:22:14.357+01:00  INFO 16200 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2024-01-22T21:22:14.424+01:00  INFO 16200 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-22T21:22:14.432+01:00  INFO 16200 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-01-22T21:22:14.658+01:00  INFO 16200 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@105b1517
+2024-01-22T21:22:14.660+01:00  INFO 16200 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-01-22T21:22:14.832+01:00  INFO 16200 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2024-01-22T21:22:15.220+01:00  INFO 16200 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-01-22T21:22:15.259+01:00 DEBUG 16200 --- [restartedMain] org.hibernate.SQL                        : alter table breakdowns modify column request_date  datetime(6)
+2024-01-22T21:22:15.339+01:00  INFO 16200 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-22T21:22:15.649+01:00  WARN 16200 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-22T21:22:15.805+01:00  INFO 16200 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3b9a6b0b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@432b3516, org.springframework.security.web.context.SecurityContextHolderFilter@19bb0f98, org.springframework.security.web.header.HeaderWriterFilter@4ecfce2d, org.springframework.security.web.authentication.logout.LogoutFilter@49b91d48, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@280b9309, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6f488df6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3d049442, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@374c65a1, org.springframework.security.web.access.ExceptionTranslationFilter@55a90518, org.springframework.security.web.access.intercept.AuthorizationFilter@f4ef0ee]
+2024-01-22T21:22:15.924+01:00  INFO 16200 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-01-22T21:22:15.945+01:00  INFO 16200 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2024-01-22T21:22:15.952+01:00  INFO 16200 --- [restartedMain] k.m.CodingtechniquesTutorialApplication  : Started CodingtechniquesTutorialApplication in 3.024 seconds (process running for 3.248)
+2024-01-22T21:24:23.437+01:00  INFO 16200 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 47 class path changes (0 additions, 26 deletions, 21 modifications)
+2024-01-22T21:24:23.452+01:00  INFO 16200 --- [Thread-5] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-01-22T21:24:23.463+01:00  INFO 16200 --- [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-22T21:24:23.469+01:00  INFO 16200 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-01-22T21:24:23.478+01:00  INFO 16200 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-01-22T21:24:23.549+01:00  INFO 16200 --- [restartedMain] k.m.CodingtechniquesTutorialApplication  : Starting CodingtechniquesTutorialApplication using Java 17.0.9 with PID 16200 (/home/tkacza2/AAA/programing/magisterka/Java/DormitoryNotebooksJava/target/classes started by tkacza2 in /home/tkacza2/AAA/programing/magisterka/Java/DormitoryNotebooksJava)
+2024-01-22T21:24:23.549+01:00  INFO 16200 --- [restartedMain] k.m.CodingtechniquesTutorialApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-01-22T21:24:23.687+01:00  INFO 16200 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-22T21:24:23.702+01:00  INFO 16200 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14 ms. Found 4 JPA repository interfaces.
+2024-01-22T21:24:23.820+01:00  INFO 16200 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2024-01-22T21:24:23.821+01:00  INFO 16200 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-22T21:24:23.821+01:00  INFO 16200 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.12]
+2024-01-22T21:24:23.827+01:00  INFO 16200 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-22T21:24:23.827+01:00  INFO 16200 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 276 ms
+2024-01-22T21:24:23.858+01:00  INFO 16200 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-22T21:24:23.861+01:00  INFO 16200 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2024-01-22T21:24:23.861+01:00  INFO 16200 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-22T21:24:23.862+01:00  INFO 16200 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2024-01-22T21:24:23.878+01:00  INFO 16200 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@78001b7b
+2024-01-22T21:24:23.878+01:00  INFO 16200 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2024-01-22T21:24:23.895+01:00  INFO 16200 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2024-01-22T21:24:23.942+01:00  INFO 16200 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-01-22T21:24:23.952+01:00 DEBUG 16200 --- [restartedMain] org.hibernate.SQL                        : alter table breakdowns modify column request_date  datetime(6)
+2024-01-22T21:24:24.017+01:00  INFO 16200 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-22T21:24:24.187+01:00  WARN 16200 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-22T21:24:24.247+01:00  INFO 16200 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@68a1117, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1829c1bc, org.springframework.security.web.context.SecurityContextHolderFilter@1c1ee196, org.springframework.security.web.header.HeaderWriterFilter@11cd2069, org.springframework.security.web.authentication.logout.LogoutFilter@65bb8b8, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@5dcffc6e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@21289d5, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@15144278, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@35364a7c, org.springframework.security.web.access.ExceptionTranslationFilter@1000e225, org.springframework.security.web.access.intercept.AuthorizationFilter@2721427f]
+2024-01-22T21:24:24.280+01:00  INFO 16200 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-01-22T21:24:24.292+01:00  INFO 16200 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2024-01-22T21:24:24.295+01:00  INFO 16200 --- [restartedMain] k.m.CodingtechniquesTutorialApplication  : Started CodingtechniquesTutorialApplication in 0.766 seconds (process running for 131.591)
+2024-01-22T21:24:24.297+01:00  INFO 16200 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-01-22T21:24:25.683+01:00  INFO 16200 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 26 class path changes (26 additions, 0 deletions, 0 modifications)
+2024-01-22T21:24:25.685+01:00  INFO 16200 --- [Thread-7] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-01-22T21:24:25.689+01:00  INFO 16200 --- [Thread-7] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-22T21:24:25.690+01:00  INFO 16200 --- [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2024-01-22T21:24:25.695+01:00  INFO 16200 --- [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2024-01-22T21:24:25.749+01:00  INFO 16200 --- [restartedMain] k.m.CodingtechniquesTutorialApplication  : Starting CodingtechniquesTutorialApplication using Java 17.0.9 with PID 16200 (/home/tkacza2/AAA/programing/magisterka/Java/DormitoryNotebooksJava/target/classes started by tkacza2 in /home/tkacza2/AAA/programing/magisterka/Java/DormitoryNotebooksJava)
+2024-01-22T21:24:25.750+01:00  INFO 16200 --- [restartedMain] k.m.CodingtechniquesTutorialApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-01-22T21:24:25.831+01:00  INFO 16200 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-22T21:24:25.839+01:00  INFO 16200 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 4 JPA repository interfaces.
+2024-01-22T21:24:25.899+01:00  INFO 16200 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2024-01-22T21:24:25.899+01:00  INFO 16200 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-22T21:24:25.899+01:00  INFO 16200 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.12]
+2024-01-22T21:24:25.905+01:00  INFO 16200 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-22T21:24:25.905+01:00  INFO 16200 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 153 ms
+2024-01-22T21:24:25.928+01:00  INFO 16200 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-22T21:24:25.931+01:00  INFO 16200 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2024-01-22T21:24:25.932+01:00  INFO 16200 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-22T21:24:25.932+01:00  INFO 16200 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2024-01-22T21:24:25.943+01:00  INFO 16200 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6ddce767
+2024-01-22T21:24:25.943+01:00  INFO 16200 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2024-01-22T21:24:25.958+01:00  INFO 16200 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2024-01-22T21:24:26.004+01:00  INFO 16200 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-01-22T21:24:26.012+01:00 DEBUG 16200 --- [restartedMain] org.hibernate.SQL                        : alter table breakdowns modify column request_date  datetime(6)
+2024-01-22T21:24:26.073+01:00  INFO 16200 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-22T21:24:26.147+01:00  INFO 16547 --- [restartedMain] k.m.CodingtechniquesTutorialApplication  : Starting CodingtechniquesTutorialApplication using Java 17.0.9 with PID 16547 (/home/tkacza2/AAA/programing/magisterka/Java/DormitoryNotebooksJava/target/classes started by tkacza2 in /home/tkacza2/AAA/programing/magisterka/Java/DormitoryNotebooksJava)
+2024-01-22T21:24:26.149+01:00  INFO 16547 --- [restartedMain] k.m.CodingtechniquesTutorialApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-01-22T21:24:26.189+01:00  INFO 16547 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-01-22T21:24:26.190+01:00  INFO 16547 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-01-22T21:24:26.208+01:00  WARN 16200 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-22T21:24:26.255+01:00  INFO 16200 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6aa19b88, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@442c9476, org.springframework.security.web.context.SecurityContextHolderFilter@159a54d1, org.springframework.security.web.header.HeaderWriterFilter@64a745f0, org.springframework.security.web.authentication.logout.LogoutFilter@5a01b10e, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@3dffd4f8, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1e92bef3, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@43ac17ec, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4ac40521, org.springframework.security.web.access.ExceptionTranslationFilter@6ab7914, org.springframework.security.web.access.intercept.AuthorizationFilter@72df972d]
+2024-01-22T21:24:26.286+01:00  INFO 16200 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-01-22T21:24:26.292+01:00  INFO 16200 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2024-01-22T21:24:26.295+01:00  INFO 16200 --- [restartedMain] k.m.CodingtechniquesTutorialApplication  : Started CodingtechniquesTutorialApplication in 0.562 seconds (process running for 133.591)
+2024-01-22T21:24:26.296+01:00  INFO 16200 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-01-22T21:24:26.565+01:00  INFO 16547 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-22T21:24:26.604+01:00  INFO 16547 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 34 ms. Found 4 JPA repository interfaces.
+2024-01-22T21:24:27.008+01:00  INFO 16547 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2024-01-22T21:24:27.015+01:00  INFO 16547 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-22T21:24:27.015+01:00  INFO 16547 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.12]
+2024-01-22T21:24:27.052+01:00  INFO 16547 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-22T21:24:27.053+01:00  INFO 16547 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 863 ms
+2024-01-22T21:24:27.168+01:00  INFO 16547 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-22T21:24:27.191+01:00  INFO 16547 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.7.Final
+2024-01-22T21:24:27.193+01:00  INFO 16547 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2024-01-22T21:24:27.263+01:00  INFO 16547 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2024-01-22T21:24:27.329+01:00  INFO 16547 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-22T21:24:27.337+01:00  INFO 16547 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-01-22T21:24:27.538+01:00  INFO 16547 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@799764f8
+2024-01-22T21:24:27.539+01:00  INFO 16547 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-01-22T21:24:27.716+01:00  INFO 16547 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2024-01-22T21:24:28.197+01:00  INFO 16547 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-01-22T21:24:28.231+01:00 DEBUG 16547 --- [restartedMain] org.hibernate.SQL                        : alter table breakdowns modify column request_date  datetime(6)
+2024-01-22T21:24:28.294+01:00  INFO 16547 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-22T21:24:28.626+01:00  WARN 16547 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-22T21:24:28.788+01:00  INFO 16547 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1388e6c0, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7b220589, org.springframework.security.web.context.SecurityContextHolderFilter@569bac3f, org.springframework.security.web.header.HeaderWriterFilter@19bb0f98, org.springframework.security.web.authentication.logout.LogoutFilter@5d7a1317, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@432b3516, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@16889c58, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1e5f9a12, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@613b1c7e, org.springframework.security.web.access.ExceptionTranslationFilter@6bc5afd3, org.springframework.security.web.access.intercept.AuthorizationFilter@3b9a6b0b]
+2024-01-22T21:24:28.904+01:00  WARN 16547 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2024-01-22T21:24:28.915+01:00  WARN 16547 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2024-01-22T21:24:28.917+01:00  INFO 16547 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-22T21:24:28.919+01:00  INFO 16547 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-01-22T21:24:28.923+01:00  INFO 16547 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-01-22T21:24:28.925+01:00  INFO 16547 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-01-22T21:24:28.934+01:00  INFO 16547 --- [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-01-22T21:24:28.945+01:00 ERROR 16547 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2024-01-22T21:25:11.685+01:00  INFO 16200 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-01-22T21:25:11.686+01:00  INFO 16200 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-01-22T21:25:11.687+01:00  INFO 16200 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-01-22T21:25:11.849+01:00 DEBUG 16200 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : select o1_0.id,o1_0.acronym,o1_0.name from organization o1_0
+2024-01-22T21:25:12.877+01:00 DEBUG 16200 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : select o1_0.id,o1_0.acronym,o1_0.name from organization o1_0 where o1_0.acronym=?
+2024-01-22T21:25:12.909+01:00 DEBUG 16200 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : select o1_0.id,o1_0.acronym,o1_0.name from organization o1_0 where o1_0.acronym=?
+2024-01-22T21:25:12.915+01:00 DEBUG 16200 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : select d1_0.organization_id,d1_1.id,d1_1.name from organization_dorm d1_0 join dorm d1_1 on d1_1.id=d1_0.dorm_id where d1_0.organization_id=?
+2024-01-22T21:25:15.353+01:00 DEBUG 16200 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.email=?
+2024-01-22T21:25:15.429+01:00 DEBUG 16200 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : select d1_0.id,d1_0.name from dorm d1_0 where d1_0.name=?
+2024-01-22T21:25:15.436+01:00 DEBUG 16200 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.id=?
+2024-01-22T21:25:15.445+01:00 DEBUG 16200 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : select d1_0.id,d1_0.name from dorm d1_0 where d1_0.id=?
+2024-01-22T21:25:15.447+01:00 DEBUG 16200 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : select d1_0.user_id,d1_1.id,d1_1.name from user_dorm d1_0 join dorm d1_1 on d1_1.id=d1_0.dorm_id where d1_0.user_id=?
+2024-01-22T21:25:15.465+01:00 DEBUG 16200 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.email=?
+2024-01-22T21:25:16.008+01:00 DEBUG 16200 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : select b1_0.id,b1_0.description,b1_0.dorm_id,b1_0.is_solved,b1_0.request_date,b1_0.user_id from breakdowns b1_0
+2024-01-22T21:25:16.010+01:00 DEBUG 16200 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : select d1_0.id,d1_0.name from dorm d1_0 where d1_0.id=?
+2024-01-22T21:25:16.011+01:00 DEBUG 16200 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.id=?
+2024-01-22T21:25:42.858+01:00 DEBUG 16200 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : select b1_0.id,b1_0.description,b1_0.dorm_id,b1_0.is_solved,b1_0.request_date,b1_0.user_id from breakdowns b1_0
+2024-01-22T21:25:42.859+01:00 DEBUG 16200 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : select d1_0.id,d1_0.name from dorm d1_0 where d1_0.id=?
+2024-01-22T21:25:42.860+01:00 DEBUG 16200 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.id=?
+2024-01-22T21:25:59.693+01:00 DEBUG 16200 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : select b1_0.id,b1_0.description,b1_0.dorm_id,b1_0.is_solved,b1_0.request_date,b1_0.user_id from breakdowns b1_0
+2024-01-22T21:25:59.695+01:00 DEBUG 16200 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : select d1_0.id,d1_0.name from dorm d1_0 where d1_0.id=?
+2024-01-22T21:25:59.696+01:00 DEBUG 16200 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.id=?
+2024-01-22T21:28:09.180+01:00 DEBUG 16200 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.email=?
+2024-01-22T21:28:10.250+01:00 DEBUG 16200 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : select b1_0.id,b1_0.description,b1_0.dorm_id,b1_0.is_solved,b1_0.request_date,b1_0.user_id from breakdowns b1_0
+2024-01-22T21:28:10.252+01:00 DEBUG 16200 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : select d1_0.id,d1_0.name from dorm d1_0 where d1_0.id=?
+2024-01-22T21:28:10.254+01:00 DEBUG 16200 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.id=?
+2024-01-22T21:33:01.526+01:00  INFO 17839 --- [restartedMain] k.m.CodingtechniquesTutorialApplication  : Starting CodingtechniquesTutorialApplication using Java 17.0.9 with PID 17839 (/home/tkacza2/AAA/programing/magisterka/Java/DormitoryNotebooksJava/target/classes started by tkacza2 in /home/tkacza2/AAA/programing/magisterka/Java/DormitoryNotebooksJava)
+2024-01-22T21:33:01.528+01:00  INFO 17839 --- [restartedMain] k.m.CodingtechniquesTutorialApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-01-22T21:33:01.560+01:00  INFO 17839 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-01-22T21:33:01.560+01:00  INFO 17839 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-01-22T21:33:01.937+01:00  INFO 17839 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-22T21:33:01.979+01:00  INFO 17839 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 38 ms. Found 4 JPA repository interfaces.
+2024-01-22T21:33:02.362+01:00  INFO 17839 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2024-01-22T21:33:02.368+01:00  INFO 17839 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-22T21:33:02.368+01:00  INFO 17839 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.12]
+2024-01-22T21:33:02.405+01:00  INFO 17839 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-22T21:33:02.405+01:00  INFO 17839 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 844 ms
+2024-01-22T21:33:02.508+01:00  INFO 17839 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-22T21:33:02.535+01:00  INFO 17839 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.7.Final
+2024-01-22T21:33:02.537+01:00  INFO 17839 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2024-01-22T21:33:02.602+01:00  INFO 17839 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2024-01-22T21:33:02.665+01:00  INFO 17839 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-22T21:33:02.674+01:00  INFO 17839 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-01-22T21:33:02.870+01:00  INFO 17839 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@105b1517
+2024-01-22T21:33:02.871+01:00  INFO 17839 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-01-22T21:33:03.039+01:00  INFO 17839 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2024-01-22T21:33:03.435+01:00  INFO 17839 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-01-22T21:33:03.464+01:00 DEBUG 17839 --- [restartedMain] org.hibernate.SQL                        : alter table breakdowns modify column request_date  datetime(6)
+2024-01-22T21:33:03.524+01:00  INFO 17839 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-22T21:33:03.879+01:00  WARN 17839 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-22T21:33:04.082+01:00  INFO 17839 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3b9a6b0b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@432b3516, org.springframework.security.web.context.SecurityContextHolderFilter@19bb0f98, org.springframework.security.web.header.HeaderWriterFilter@4ecfce2d, org.springframework.security.web.authentication.logout.LogoutFilter@49b91d48, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@280b9309, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6f488df6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3d049442, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@374c65a1, org.springframework.security.web.access.ExceptionTranslationFilter@55a90518, org.springframework.security.web.access.intercept.AuthorizationFilter@f4ef0ee]
+2024-01-22T21:33:04.247+01:00  INFO 17839 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-01-22T21:33:04.273+01:00  INFO 17839 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2024-01-22T21:33:04.282+01:00  INFO 17839 --- [restartedMain] k.m.CodingtechniquesTutorialApplication  : Started CodingtechniquesTutorialApplication in 2.996 seconds (process running for 3.204)
+2024-01-22T21:34:23.099+01:00  INFO 18046 --- [restartedMain] k.m.CodingtechniquesTutorialApplication  : Starting CodingtechniquesTutorialApplication using Java 17.0.9 with PID 18046 (/home/tkacza2/AAA/programing/magisterka/Java/DormitoryNotebooksJava/target/classes started by tkacza2 in /home/tkacza2/AAA/programing/magisterka/Java/DormitoryNotebooksJava)
+2024-01-22T21:34:23.101+01:00  INFO 18046 --- [restartedMain] k.m.CodingtechniquesTutorialApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-01-22T21:34:23.133+01:00  INFO 18046 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-01-22T21:34:23.134+01:00  INFO 18046 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-01-22T21:34:23.544+01:00  INFO 18046 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-22T21:34:23.591+01:00  INFO 18046 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 42 ms. Found 4 JPA repository interfaces.
+2024-01-22T21:34:24.047+01:00  INFO 18046 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2024-01-22T21:34:24.054+01:00  INFO 18046 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-22T21:34:24.055+01:00  INFO 18046 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.12]
+2024-01-22T21:34:24.099+01:00  INFO 18046 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-22T21:34:24.100+01:00  INFO 18046 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 966 ms
+2024-01-22T21:34:24.222+01:00  INFO 18046 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-22T21:34:24.249+01:00  INFO 18046 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.7.Final
+2024-01-22T21:34:24.251+01:00  INFO 18046 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2024-01-22T21:34:24.333+01:00  INFO 18046 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2024-01-22T21:34:24.405+01:00  INFO 18046 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-22T21:34:24.415+01:00  INFO 18046 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-01-22T21:34:24.642+01:00  INFO 18046 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@105b1517
+2024-01-22T21:34:24.643+01:00  INFO 18046 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-01-22T21:34:24.852+01:00  INFO 18046 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2024-01-22T21:34:25.254+01:00  INFO 18046 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-01-22T21:34:25.284+01:00 DEBUG 18046 --- [restartedMain] org.hibernate.SQL                        : alter table breakdowns modify column request_date  datetime(6)
+2024-01-22T21:34:25.345+01:00  INFO 18046 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-22T21:34:25.688+01:00  WARN 18046 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-22T21:34:25.892+01:00  INFO 18046 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7b220589, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@613b1c7e, org.springframework.security.web.context.SecurityContextHolderFilter@179daebb, org.springframework.security.web.header.HeaderWriterFilter@29b51424, org.springframework.security.web.authentication.logout.LogoutFilter@5c2816ad, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@374c65a1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3d049442, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7e0bb1f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@350e1c95, org.springframework.security.web.access.ExceptionTranslationFilter@7659e676, org.springframework.security.web.access.intercept.AuthorizationFilter@432b3516]
+2024-01-22T21:34:26.057+01:00  INFO 18046 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-01-22T21:34:26.081+01:00  INFO 18046 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2024-01-22T21:34:26.090+01:00  INFO 18046 --- [restartedMain] k.m.CodingtechniquesTutorialApplication  : Started CodingtechniquesTutorialApplication in 3.224 seconds (process running for 3.46)
+2024-01-22T21:34:28.975+01:00  INFO 18046 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-01-22T21:34:28.976+01:00  INFO 18046 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-01-22T21:34:28.977+01:00  INFO 18046 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-01-22T21:34:29.115+01:00 DEBUG 18046 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : select o1_0.id,o1_0.acronym,o1_0.name from organization o1_0
+2024-01-22T21:34:29.412+01:00 DEBUG 18046 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : select o1_0.id,o1_0.acronym,o1_0.name from organization o1_0
+2024-01-22T21:34:29.529+01:00 DEBUG 18046 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : select o1_0.id,o1_0.acronym,o1_0.name from organization o1_0 where o1_0.acronym=?
+2024-01-22T21:34:29.545+01:00 DEBUG 18046 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : select o1_0.id,o1_0.acronym,o1_0.name from organization o1_0 where o1_0.acronym=?
+2024-01-22T21:34:29.551+01:00 DEBUG 18046 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : select d1_0.organization_id,d1_1.id,d1_1.name from organization_dorm d1_0 join dorm d1_1 on d1_1.id=d1_0.dorm_id where d1_0.organization_id=?
+2024-01-22T21:34:30.193+01:00 DEBUG 18046 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.email=?
+2024-01-22T21:34:30.271+01:00 DEBUG 18046 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : select d1_0.id,d1_0.name from dorm d1_0 where d1_0.name=?
+2024-01-22T21:34:30.277+01:00 DEBUG 18046 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.id=?
+2024-01-22T21:34:30.286+01:00 DEBUG 18046 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : select d1_0.id,d1_0.name from dorm d1_0 where d1_0.id=?
+2024-01-22T21:34:30.288+01:00 DEBUG 18046 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : select d1_0.user_id,d1_1.id,d1_1.name from user_dorm d1_0 join dorm d1_1 on d1_1.id=d1_0.dorm_id where d1_0.user_id=?
+2024-01-22T21:34:30.297+01:00 DEBUG 18046 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.email=?
+2024-01-22T21:34:30.370+01:00 DEBUG 18046 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : select b1_0.id,b1_0.description,b1_0.dorm_id,b1_0.is_solved,b1_0.request_date,b1_0.user_id from breakdowns b1_0
+2024-01-22T21:34:30.373+01:00 DEBUG 18046 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : select d1_0.id,d1_0.name from dorm d1_0 where d1_0.id=?
+2024-01-22T21:34:30.374+01:00 DEBUG 18046 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.id=?
+2024-01-22T21:34:43.754+01:00 DEBUG 18046 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.email=?
+2024-01-22T21:34:43.909+01:00 DEBUG 18046 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : select o1_0.id,o1_0.acronym,o1_0.name from organization o1_0 where o1_0.acronym=?
+2024-01-22T21:34:43.911+01:00 DEBUG 18046 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : select d1_0.organization_id,d1_1.id,d1_1.name from organization_dorm d1_0 join dorm d1_1 on d1_1.id=d1_0.dorm_id where d1_0.organization_id=?
+2024-01-22T21:34:56.697+01:00 DEBUG 18046 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.email=?
+2024-01-22T21:34:56.776+01:00 DEBUG 18046 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : select o1_0.id,o1_0.acronym,o1_0.name from organization o1_0 where o1_0.acronym=?
+2024-01-22T21:34:56.778+01:00 DEBUG 18046 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : select d1_0.organization_id,d1_1.id,d1_1.name from organization_dorm d1_0 join dorm d1_1 on d1_1.id=d1_0.dorm_id where d1_0.organization_id=?
+2024-01-22T21:35:10.323+01:00 DEBUG 18046 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.email=?
+2024-01-22T21:35:10.397+01:00 DEBUG 18046 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : select d1_0.id,d1_0.name from dorm d1_0 where d1_0.name=?
+2024-01-22T21:35:10.399+01:00 DEBUG 18046 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.id=?
+2024-01-22T21:35:10.403+01:00 DEBUG 18046 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : select d1_0.id,d1_0.name from dorm d1_0 where d1_0.id=?
+2024-01-22T21:35:10.404+01:00 DEBUG 18046 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : select d1_0.user_id,d1_1.id,d1_1.name from user_dorm d1_0 join dorm d1_1 on d1_1.id=d1_0.dorm_id where d1_0.user_id=?
+2024-01-22T21:35:10.411+01:00 DEBUG 18046 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.email=?
+2024-01-22T21:35:11.745+01:00 DEBUG 18046 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : select b1_0.id,b1_0.description,b1_0.dorm_id,b1_0.is_solved,b1_0.request_date,b1_0.user_id from breakdowns b1_0
+2024-01-22T21:35:11.747+01:00 DEBUG 18046 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : select d1_0.id,d1_0.name from dorm d1_0 where d1_0.id=?
+2024-01-22T21:35:11.748+01:00 DEBUG 18046 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.id=?
+2024-01-22T21:35:18.940+01:00 ERROR 18046 --- [http-nio-8080-exec-4] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NumberFormatException: Cannot parse null string] with root cause
+
+java.lang.NumberFormatException: Cannot parse null string
+	at java.base/java.lang.Long.parseLong(Long.java:674) ~[na:na]
+	at java.base/java.lang.Long.valueOf(Long.java:1163) ~[na:na]
+	at kaczuch.master_thesis.controller.BreakdownsController.remove_breakdown(BreakdownsController.java:87) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.0.11.jar:6.0.11]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884) ~[spring-webmvc-6.0.11.jar:6.0.11]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797) ~[spring-webmvc-6.0.11.jar:6.0.11]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.0.11.jar:6.0.11]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1081) ~[spring-webmvc-6.0.11.jar:6.0.11]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974) ~[spring-webmvc-6.0.11.jar:6.0.11]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011) ~[spring-webmvc-6.0.11.jar:6.0.11]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.0.11.jar:6.0.11]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.12.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.0.11.jar:6.0.11]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.12.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:227) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1740) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2024-01-22T21:35:52.189+01:00 DEBUG 18046 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : select b1_0.id,b1_0.description,b1_0.dorm_id,b1_0.is_solved,b1_0.request_date,b1_0.user_id from breakdowns b1_0
+2024-01-22T21:35:52.191+01:00 DEBUG 18046 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : select d1_0.id,d1_0.name from dorm d1_0 where d1_0.id=?
+2024-01-22T21:35:52.191+01:00 DEBUG 18046 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.id=?
+2024-01-22T21:37:04.440+01:00  INFO 18334 --- [restartedMain] k.m.CodingtechniquesTutorialApplication  : Starting CodingtechniquesTutorialApplication using Java 17.0.9 with PID 18334 (/home/tkacza2/AAA/programing/magisterka/Java/DormitoryNotebooksJava/target/classes started by tkacza2 in /home/tkacza2/AAA/programing/magisterka/Java/DormitoryNotebooksJava)
+2024-01-22T21:37:04.442+01:00  INFO 18334 --- [restartedMain] k.m.CodingtechniquesTutorialApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-01-22T21:37:04.475+01:00  INFO 18334 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-01-22T21:37:04.475+01:00  INFO 18334 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-01-22T21:37:04.916+01:00  INFO 18334 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-22T21:37:04.964+01:00  INFO 18334 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 43 ms. Found 4 JPA repository interfaces.
+2024-01-22T21:37:05.359+01:00  INFO 18334 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2024-01-22T21:37:05.365+01:00  INFO 18334 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-22T21:37:05.366+01:00  INFO 18334 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.12]
+2024-01-22T21:37:05.403+01:00  INFO 18334 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-22T21:37:05.404+01:00  INFO 18334 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 929 ms
+2024-01-22T21:37:05.496+01:00  INFO 18334 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-22T21:37:05.531+01:00  INFO 18334 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.7.Final
+2024-01-22T21:37:05.533+01:00  INFO 18334 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2024-01-22T21:37:05.609+01:00  INFO 18334 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2024-01-22T21:37:05.679+01:00  INFO 18334 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-22T21:37:05.689+01:00  INFO 18334 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-01-22T21:37:05.892+01:00  INFO 18334 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@9990b34
+2024-01-22T21:37:05.894+01:00  INFO 18334 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-01-22T21:37:06.063+01:00  INFO 18334 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2024-01-22T21:37:06.450+01:00  INFO 18334 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-01-22T21:37:06.478+01:00 DEBUG 18334 --- [restartedMain] org.hibernate.SQL                        : alter table breakdowns modify column request_date  datetime(6)
+2024-01-22T21:37:06.537+01:00  INFO 18334 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-22T21:37:06.867+01:00  WARN 18334 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-22T21:37:07.030+01:00  INFO 18334 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@207ea50f, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3a45f850, org.springframework.security.web.context.SecurityContextHolderFilter@1bad054e, org.springframework.security.web.header.HeaderWriterFilter@6fe9bdf5, org.springframework.security.web.authentication.logout.LogoutFilter@4f4e194f, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@556c9d7, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@63cafd9d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7c45385, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@96e86be, org.springframework.security.web.access.ExceptionTranslationFilter@5173c28b, org.springframework.security.web.access.intercept.AuthorizationFilter@3f64b8a8]
+2024-01-22T21:37:07.160+01:00  INFO 18334 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-01-22T21:37:07.179+01:00  INFO 18334 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2024-01-22T21:37:07.187+01:00  INFO 18334 --- [restartedMain] k.m.CodingtechniquesTutorialApplication  : Started CodingtechniquesTutorialApplication in 2.991 seconds (process running for 3.203)
+2024-01-22T21:37:09.921+01:00  INFO 18334 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-01-22T21:37:09.922+01:00  INFO 18334 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-01-22T21:37:09.924+01:00  INFO 18334 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-01-22T21:37:10.062+01:00 DEBUG 18334 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : select o1_0.id,o1_0.acronym,o1_0.name from organization o1_0
+2024-01-22T21:37:10.417+01:00 DEBUG 18334 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : select o1_0.id,o1_0.acronym,o1_0.name from organization o1_0 where o1_0.acronym=?
+2024-01-22T21:37:10.440+01:00 DEBUG 18334 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : select o1_0.id,o1_0.acronym,o1_0.name from organization o1_0 where o1_0.acronym=?
+2024-01-22T21:37:10.446+01:00 DEBUG 18334 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : select d1_0.organization_id,d1_1.id,d1_1.name from organization_dorm d1_0 join dorm d1_1 on d1_1.id=d1_0.dorm_id where d1_0.organization_id=?
+2024-01-22T21:37:11.088+01:00 DEBUG 18334 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.email=?
+2024-01-22T21:37:11.167+01:00 DEBUG 18334 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : select d1_0.id,d1_0.name from dorm d1_0 where d1_0.name=?
+2024-01-22T21:37:11.174+01:00 DEBUG 18334 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.id=?
+2024-01-22T21:37:11.186+01:00 DEBUG 18334 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : select d1_0.id,d1_0.name from dorm d1_0 where d1_0.id=?
+2024-01-22T21:37:11.188+01:00 DEBUG 18334 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : select d1_0.user_id,d1_1.id,d1_1.name from user_dorm d1_0 join dorm d1_1 on d1_1.id=d1_0.dorm_id where d1_0.user_id=?
+2024-01-22T21:37:11.201+01:00 DEBUG 18334 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.email=?
+2024-01-22T21:37:11.266+01:00 DEBUG 18334 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : select b1_0.id,b1_0.description,b1_0.dorm_id,b1_0.is_solved,b1_0.request_date,b1_0.user_id from breakdowns b1_0
+2024-01-22T21:37:11.269+01:00 DEBUG 18334 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : select d1_0.id,d1_0.name from dorm d1_0 where d1_0.id=?
+2024-01-22T21:37:11.271+01:00 DEBUG 18334 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.id=?
+2024-01-22T21:37:16.351+01:00 ERROR 18334 --- [http-nio-8080-exec-3] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NumberFormatException: Cannot parse null string] with root cause
+
+java.lang.NumberFormatException: Cannot parse null string
+	at java.base/java.lang.Long.parseLong(Long.java:674) ~[na:na]
+	at java.base/java.lang.Long.valueOf(Long.java:1163) ~[na:na]
+	at kaczuch.master_thesis.controller.BreakdownsController.remove_breakdown(BreakdownsController.java:88) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.0.11.jar:6.0.11]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884) ~[spring-webmvc-6.0.11.jar:6.0.11]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797) ~[spring-webmvc-6.0.11.jar:6.0.11]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.0.11.jar:6.0.11]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1081) ~[spring-webmvc-6.0.11.jar:6.0.11]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974) ~[spring-webmvc-6.0.11.jar:6.0.11]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011) ~[spring-webmvc-6.0.11.jar:6.0.11]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.0.11.jar:6.0.11]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.12.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.0.11.jar:6.0.11]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.12.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:227) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.1.3.jar:6.1.3]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.11.jar:6.0.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1740) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.12.jar:10.1.12]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2024-01-22T21:41:36.457+01:00  INFO 18587 --- [restartedMain] k.m.CodingtechniquesTutorialApplication  : Starting CodingtechniquesTutorialApplication using Java 17.0.9 with PID 18587 (/home/tkacza2/AAA/programing/magisterka/Java/DormitoryNotebooksJava/target/classes started by tkacza2 in /home/tkacza2/AAA/programing/magisterka/Java/DormitoryNotebooksJava)
+2024-01-22T21:41:36.460+01:00  INFO 18587 --- [restartedMain] k.m.CodingtechniquesTutorialApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-01-22T21:41:36.502+01:00  INFO 18587 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-01-22T21:41:36.502+01:00  INFO 18587 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-01-22T21:41:36.879+01:00  INFO 18587 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-22T21:41:36.920+01:00  INFO 18587 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 37 ms. Found 4 JPA repository interfaces.
+2024-01-22T21:41:37.298+01:00  INFO 18587 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2024-01-22T21:41:37.305+01:00  INFO 18587 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-22T21:41:37.306+01:00  INFO 18587 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.12]
+2024-01-22T21:41:37.346+01:00  INFO 18587 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-22T21:41:37.346+01:00  INFO 18587 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 844 ms
+2024-01-22T21:41:37.448+01:00  INFO 18587 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-22T21:41:37.475+01:00  INFO 18587 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.7.Final
+2024-01-22T21:41:37.477+01:00  INFO 18587 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2024-01-22T21:41:37.543+01:00  INFO 18587 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2024-01-22T21:41:37.610+01:00  INFO 18587 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-22T21:41:37.620+01:00  INFO 18587 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-01-22T21:41:37.809+01:00  INFO 18587 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@531f3dba
+2024-01-22T21:41:37.811+01:00  INFO 18587 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-01-22T21:41:37.980+01:00  INFO 18587 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2024-01-22T21:41:38.364+01:00  INFO 18587 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-01-22T21:41:38.395+01:00 DEBUG 18587 --- [restartedMain] org.hibernate.SQL                        : alter table breakdowns modify column request_date  datetime(6)
+2024-01-22T21:41:38.456+01:00  INFO 18587 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-22T21:41:38.782+01:00  WARN 18587 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-22T21:41:38.941+01:00  INFO 18587 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@374c65a1, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1388e6c0, org.springframework.security.web.context.SecurityContextHolderFilter@6f488df6, org.springframework.security.web.header.HeaderWriterFilter@7659e676, org.springframework.security.web.authentication.logout.LogoutFilter@505ea945, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@3b9a6b0b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@179daebb, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4ce7b58a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7b220589, org.springframework.security.web.access.ExceptionTranslationFilter@4ecfce2d, org.springframework.security.web.access.intercept.AuthorizationFilter@780b8d6d]
+2024-01-22T21:41:39.066+01:00  INFO 18587 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-01-22T21:41:39.086+01:00  INFO 18587 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2024-01-22T21:41:39.093+01:00  INFO 18587 --- [restartedMain] k.m.CodingtechniquesTutorialApplication  : Started CodingtechniquesTutorialApplication in 2.893 seconds (process running for 3.104)
+2024-01-22T21:42:31.725+01:00  INFO 18587 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-22T21:42:31.727+01:00  INFO 18587 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-01-22T21:42:31.732+01:00  INFO 18587 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-01-22T21:42:48.611+01:00  INFO 18831 --- [restartedMain] k.m.CodingtechniquesTutorialApplication  : Starting CodingtechniquesTutorialApplication using Java 17.0.9 with PID 18831 (/home/tkacza2/AAA/programing/magisterka/Java/DormitoryNotebooksJava/target/classes started by tkacza2 in /home/tkacza2/AAA/programing/magisterka/Java/DormitoryNotebooksJava)
+2024-01-22T21:42:48.614+01:00  INFO 18831 --- [restartedMain] k.m.CodingtechniquesTutorialApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-01-22T21:42:48.649+01:00  INFO 18831 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-01-22T21:42:48.650+01:00  INFO 18831 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-01-22T21:42:49.127+01:00  INFO 18831 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-22T21:42:49.177+01:00  INFO 18831 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 43 ms. Found 4 JPA repository interfaces.
+2024-01-22T21:42:49.543+01:00  INFO 18831 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2024-01-22T21:42:49.550+01:00  INFO 18831 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-22T21:42:49.550+01:00  INFO 18831 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.12]
+2024-01-22T21:42:49.589+01:00  INFO 18831 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-22T21:42:49.589+01:00  INFO 18831 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 939 ms
+2024-01-22T21:42:49.681+01:00  INFO 18831 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-22T21:42:49.720+01:00  INFO 18831 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.7.Final
+2024-01-22T21:42:49.722+01:00  INFO 18831 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2024-01-22T21:42:49.794+01:00  INFO 18831 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2024-01-22T21:42:49.861+01:00  INFO 18831 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-22T21:42:49.870+01:00  INFO 18831 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-01-22T21:42:50.071+01:00  INFO 18831 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@105b1517
+2024-01-22T21:42:50.073+01:00  INFO 18831 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-01-22T21:42:50.233+01:00  INFO 18831 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2024-01-22T21:42:50.627+01:00  INFO 18831 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-01-22T21:42:50.655+01:00 DEBUG 18831 --- [restartedMain] org.hibernate.SQL                        : alter table breakdowns modify column request_date  datetime(6)
+2024-01-22T21:42:50.715+01:00  INFO 18831 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-22T21:42:51.065+01:00  WARN 18831 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-22T21:42:51.229+01:00  INFO 18831 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3b9a6b0b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@432b3516, org.springframework.security.web.context.SecurityContextHolderFilter@19bb0f98, org.springframework.security.web.header.HeaderWriterFilter@4ecfce2d, org.springframework.security.web.authentication.logout.LogoutFilter@49b91d48, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@280b9309, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6f488df6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3d049442, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@374c65a1, org.springframework.security.web.access.ExceptionTranslationFilter@55a90518, org.springframework.security.web.access.intercept.AuthorizationFilter@f4ef0ee]
+2024-01-22T21:42:51.364+01:00  INFO 18831 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-01-22T21:42:51.382+01:00  INFO 18831 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2024-01-22T21:42:51.393+01:00  INFO 18831 --- [restartedMain] k.m.CodingtechniquesTutorialApplication  : Started CodingtechniquesTutorialApplication in 3.066 seconds (process running for 3.267)
+2024-01-22T21:42:54.285+01:00  INFO 18831 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-01-22T21:42:54.286+01:00  INFO 18831 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-01-22T21:42:54.287+01:00  INFO 18831 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-01-22T21:42:54.426+01:00 DEBUG 18831 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : select o1_0.id,o1_0.acronym,o1_0.name from organization o1_0
+2024-01-22T21:42:54.893+01:00 DEBUG 18831 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : select o1_0.id,o1_0.acronym,o1_0.name from organization o1_0 where o1_0.acronym=?
+2024-01-22T21:42:54.916+01:00 DEBUG 18831 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : select o1_0.id,o1_0.acronym,o1_0.name from organization o1_0 where o1_0.acronym=?
+2024-01-22T21:42:54.923+01:00 DEBUG 18831 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : select d1_0.organization_id,d1_1.id,d1_1.name from organization_dorm d1_0 join dorm d1_1 on d1_1.id=d1_0.dorm_id where d1_0.organization_id=?
+2024-01-22T21:42:55.596+01:00 DEBUG 18831 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.email=?
+2024-01-22T21:42:55.679+01:00 DEBUG 18831 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : select d1_0.id,d1_0.name from dorm d1_0 where d1_0.name=?
+2024-01-22T21:42:55.694+01:00 DEBUG 18831 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.id=?
+2024-01-22T21:42:55.707+01:00 DEBUG 18831 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : select d1_0.id,d1_0.name from dorm d1_0 where d1_0.id=?
+2024-01-22T21:42:55.710+01:00 DEBUG 18831 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : select d1_0.user_id,d1_1.id,d1_1.name from user_dorm d1_0 join dorm d1_1 on d1_1.id=d1_0.dorm_id where d1_0.user_id=?
+2024-01-22T21:42:55.725+01:00 DEBUG 18831 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.email=?
+2024-01-22T21:42:55.858+01:00 DEBUG 18831 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : select b1_0.id,b1_0.description,b1_0.dorm_id,b1_0.is_solved,b1_0.request_date,b1_0.user_id from breakdowns b1_0
+2024-01-22T21:42:55.861+01:00 DEBUG 18831 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : select d1_0.id,d1_0.name from dorm d1_0 where d1_0.id=?
+2024-01-22T21:42:55.863+01:00 DEBUG 18831 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.id=?
+2024-01-22T21:43:00.043+01:00 DEBUG 18831 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : select b1_0.id,b1_0.description,d1_0.id,d1_0.name,b1_0.is_solved,b1_0.request_date,u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from breakdowns b1_0 left join dorm d1_0 on d1_0.id=b1_0.dorm_id left join users u1_0 on u1_0.id=b1_0.user_id where b1_0.id=?
+2024-01-22T21:43:00.056+01:00 DEBUG 18831 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : delete from breakdowns where id=?
+2024-01-22T21:43:00.077+01:00  WARN 18831 --- [http-nio-8080-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-01-22T21:47:10.445+01:00  INFO 19112 --- [restartedMain] k.m.CodingtechniquesTutorialApplication  : Starting CodingtechniquesTutorialApplication using Java 17.0.9 with PID 19112 (/home/tkacza2/AAA/programing/magisterka/Java/DormitoryNotebooksJava/target/classes started by tkacza2 in /home/tkacza2/AAA/programing/magisterka/Java/DormitoryNotebooksJava)
+2024-01-22T21:47:10.447+01:00  INFO 19112 --- [restartedMain] k.m.CodingtechniquesTutorialApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-01-22T21:47:10.491+01:00  INFO 19112 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-01-22T21:47:10.491+01:00  INFO 19112 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-01-22T21:47:10.960+01:00  INFO 19112 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-22T21:47:11.022+01:00  INFO 19112 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 54 ms. Found 4 JPA repository interfaces.
+2024-01-22T21:47:11.497+01:00  INFO 19112 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2024-01-22T21:47:11.506+01:00  INFO 19112 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-22T21:47:11.507+01:00  INFO 19112 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.12]
+2024-01-22T21:47:11.547+01:00  INFO 19112 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-22T21:47:11.548+01:00  INFO 19112 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1056 ms
+2024-01-22T21:47:11.671+01:00  INFO 19112 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-22T21:47:11.701+01:00  INFO 19112 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.7.Final
+2024-01-22T21:47:11.702+01:00  INFO 19112 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2024-01-22T21:47:11.776+01:00  INFO 19112 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2024-01-22T21:47:11.848+01:00  INFO 19112 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-22T21:47:11.860+01:00  INFO 19112 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-01-22T21:47:12.101+01:00  INFO 19112 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@105b1517
+2024-01-22T21:47:12.103+01:00  INFO 19112 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-01-22T21:47:12.288+01:00  INFO 19112 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2024-01-22T21:47:12.710+01:00  INFO 19112 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-01-22T21:47:12.744+01:00 DEBUG 19112 --- [restartedMain] org.hibernate.SQL                        : alter table breakdowns modify column request_date  datetime(6)
+2024-01-22T21:47:12.807+01:00  INFO 19112 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-22T21:47:13.187+01:00  WARN 19112 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-22T21:47:13.418+01:00  INFO 19112 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3b9a6b0b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@432b3516, org.springframework.security.web.context.SecurityContextHolderFilter@19bb0f98, org.springframework.security.web.header.HeaderWriterFilter@4ecfce2d, org.springframework.security.web.authentication.logout.LogoutFilter@49b91d48, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@280b9309, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6f488df6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3d049442, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@374c65a1, org.springframework.security.web.access.ExceptionTranslationFilter@55a90518, org.springframework.security.web.access.intercept.AuthorizationFilter@f4ef0ee]
+2024-01-22T21:47:13.604+01:00  INFO 19112 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-01-22T21:47:13.632+01:00  INFO 19112 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2024-01-22T21:47:13.642+01:00  INFO 19112 --- [restartedMain] k.m.CodingtechniquesTutorialApplication  : Started CodingtechniquesTutorialApplication in 3.488 seconds (process running for 3.846)
+2024-01-22T21:47:14.882+01:00  INFO 19112 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-01-22T21:47:14.882+01:00  INFO 19112 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-01-22T21:47:14.883+01:00  INFO 19112 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-01-22T21:47:15.067+01:00 DEBUG 19112 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : select o1_0.id,o1_0.acronym,o1_0.name from organization o1_0
+2024-01-22T21:47:15.468+01:00 DEBUG 19112 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : select o1_0.id,o1_0.acronym,o1_0.name from organization o1_0 where o1_0.acronym=?
+2024-01-22T21:47:15.493+01:00 DEBUG 19112 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : select o1_0.id,o1_0.acronym,o1_0.name from organization o1_0 where o1_0.acronym=?
+2024-01-22T21:47:15.500+01:00 DEBUG 19112 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : select d1_0.organization_id,d1_1.id,d1_1.name from organization_dorm d1_0 join dorm d1_1 on d1_1.id=d1_0.dorm_id where d1_0.organization_id=?
+2024-01-22T21:47:16.157+01:00 DEBUG 19112 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.email=?
+2024-01-22T21:47:16.242+01:00 DEBUG 19112 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : select d1_0.id,d1_0.name from dorm d1_0 where d1_0.name=?
+2024-01-22T21:47:16.252+01:00 DEBUG 19112 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.id=?
+2024-01-22T21:47:16.263+01:00 DEBUG 19112 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : select d1_0.id,d1_0.name from dorm d1_0 where d1_0.id=?
+2024-01-22T21:47:16.267+01:00 DEBUG 19112 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : select d1_0.user_id,d1_1.id,d1_1.name from user_dorm d1_0 join dorm d1_1 on d1_1.id=d1_0.dorm_id where d1_0.user_id=?
+2024-01-22T21:47:16.280+01:00 DEBUG 19112 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.email=?
+2024-01-22T21:47:16.369+01:00 DEBUG 19112 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : select b1_0.id,b1_0.description,b1_0.dorm_id,b1_0.is_solved,b1_0.request_date,b1_0.user_id from breakdowns b1_0
+2024-01-22T21:47:16.372+01:00 DEBUG 19112 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : select d1_0.id,d1_0.name from dorm d1_0 where d1_0.id=?
+2024-01-22T21:47:16.374+01:00 DEBUG 19112 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.id=?
+2024-01-22T21:48:53.708+01:00 DEBUG 19112 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : select b1_0.id,b1_0.description,b1_0.dorm_id,b1_0.is_solved,b1_0.request_date,b1_0.user_id from breakdowns b1_0
+2024-01-22T21:48:53.710+01:00 DEBUG 19112 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : select d1_0.id,d1_0.name from dorm d1_0 where d1_0.id=?
+2024-01-22T21:48:53.711+01:00 DEBUG 19112 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.id=?
+2024-01-22T21:49:43.785+01:00 DEBUG 19112 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : select o1_0.id,o1_0.acronym,o1_0.name from organization o1_0
+2024-01-22T21:49:44.313+01:00 DEBUG 19112 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : select o1_0.id,o1_0.acronym,o1_0.name from organization o1_0
+2024-01-22T21:49:44.847+01:00 DEBUG 19112 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : select o1_0.id,o1_0.acronym,o1_0.name from organization o1_0 where o1_0.acronym=?
+2024-01-22T21:49:44.897+01:00 DEBUG 19112 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : select o1_0.id,o1_0.acronym,o1_0.name from organization o1_0 where o1_0.acronym=?
+2024-01-22T21:49:44.900+01:00 DEBUG 19112 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : select d1_0.organization_id,d1_1.id,d1_1.name from organization_dorm d1_0 join dorm d1_1 on d1_1.id=d1_0.dorm_id where d1_0.organization_id=?
+2024-01-22T21:49:45.155+01:00 DEBUG 19112 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : select o1_0.id,o1_0.acronym,o1_0.name from organization o1_0 where o1_0.acronym=?
+2024-01-22T21:49:45.157+01:00 DEBUG 19112 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : select d1_0.organization_id,d1_1.id,d1_1.name from organization_dorm d1_0 join dorm d1_1 on d1_1.id=d1_0.dorm_id where d1_0.organization_id=?
+2024-01-22T21:49:47.739+01:00 DEBUG 19112 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.email=?
+2024-01-22T21:49:47.827+01:00 DEBUG 19112 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : select d1_0.id,d1_0.name from dorm d1_0 where d1_0.name=?
+2024-01-22T21:49:47.830+01:00 DEBUG 19112 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.id=?
+2024-01-22T21:49:47.834+01:00 DEBUG 19112 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : select d1_0.id,d1_0.name from dorm d1_0 where d1_0.id=?
+2024-01-22T21:49:47.837+01:00 DEBUG 19112 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : select d1_0.user_id,d1_1.id,d1_1.name from user_dorm d1_0 join dorm d1_1 on d1_1.id=d1_0.dorm_id where d1_0.user_id=?
+2024-01-22T21:49:47.858+01:00 DEBUG 19112 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.email=?
+2024-01-22T21:49:48.651+01:00 DEBUG 19112 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : select b1_0.id,b1_0.description,b1_0.dorm_id,b1_0.is_solved,b1_0.request_date,b1_0.user_id from breakdowns b1_0
+2024-01-22T21:49:48.653+01:00 DEBUG 19112 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : select d1_0.id,d1_0.name from dorm d1_0 where d1_0.id=?
+2024-01-22T21:49:48.655+01:00 DEBUG 19112 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.id=?
+2024-01-22T21:49:53.637+01:00 DEBUG 19112 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : select b1_0.id,b1_0.description,d1_0.id,d1_0.name,b1_0.is_solved,b1_0.request_date,u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from breakdowns b1_0 left join dorm d1_0 on d1_0.id=b1_0.dorm_id left join users u1_0 on u1_0.id=b1_0.user_id where b1_0.id=?
+2024-01-22T21:49:53.649+01:00 DEBUG 19112 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : delete from breakdowns where id=?
+2024-01-22T21:49:53.676+01:00  WARN 19112 --- [http-nio-8080-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-01-22T21:55:23.708+01:00  INFO 19500 --- [restartedMain] k.m.CodingtechniquesTutorialApplication  : Starting CodingtechniquesTutorialApplication using Java 17.0.9 with PID 19500 (/home/tkacza2/AAA/programing/magisterka/Java/DormitoryNotebooksJava/target/classes started by tkacza2 in /home/tkacza2/AAA/programing/magisterka/Java/DormitoryNotebooksJava)
+2024-01-22T21:55:23.710+01:00  INFO 19500 --- [restartedMain] k.m.CodingtechniquesTutorialApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-01-22T21:55:23.755+01:00  INFO 19500 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-01-22T21:55:23.756+01:00  INFO 19500 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-01-22T21:55:24.215+01:00  INFO 19500 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-22T21:55:24.263+01:00  INFO 19500 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 43 ms. Found 4 JPA repository interfaces.
+2024-01-22T21:55:24.640+01:00  INFO 19500 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2024-01-22T21:55:24.646+01:00  INFO 19500 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-22T21:55:24.646+01:00  INFO 19500 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.12]
+2024-01-22T21:55:24.688+01:00  INFO 19500 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-22T21:55:24.688+01:00  INFO 19500 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 931 ms
+2024-01-22T21:55:24.804+01:00  INFO 19500 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-22T21:55:24.834+01:00  INFO 19500 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.7.Final
+2024-01-22T21:55:24.835+01:00  INFO 19500 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2024-01-22T21:55:24.907+01:00  INFO 19500 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2024-01-22T21:55:24.973+01:00  INFO 19500 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-22T21:55:24.983+01:00  INFO 19500 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-01-22T21:55:25.184+01:00  INFO 19500 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@105b1517
+2024-01-22T21:55:25.185+01:00  INFO 19500 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-01-22T21:55:25.360+01:00  INFO 19500 --- [restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2024-01-22T21:55:25.825+01:00  INFO 19500 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-01-22T21:55:25.862+01:00 DEBUG 19500 --- [restartedMain] org.hibernate.SQL                        : alter table breakdowns modify column request_date  datetime(6)
+2024-01-22T21:55:25.924+01:00  INFO 19500 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-22T21:55:26.264+01:00  WARN 19500 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-22T21:55:26.433+01:00  INFO 19500 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3b9a6b0b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@432b3516, org.springframework.security.web.context.SecurityContextHolderFilter@19bb0f98, org.springframework.security.web.header.HeaderWriterFilter@4ecfce2d, org.springframework.security.web.authentication.logout.LogoutFilter@49b91d48, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@280b9309, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6f488df6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3d049442, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@374c65a1, org.springframework.security.web.access.ExceptionTranslationFilter@55a90518, org.springframework.security.web.access.intercept.AuthorizationFilter@f4ef0ee]
+2024-01-22T21:55:26.562+01:00  INFO 19500 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-01-22T21:55:26.585+01:00  INFO 19500 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2024-01-22T21:55:26.593+01:00  INFO 19500 --- [restartedMain] k.m.CodingtechniquesTutorialApplication  : Started CodingtechniquesTutorialApplication in 3.188 seconds (process running for 3.423)
+2024-01-22T21:55:28.684+01:00  INFO 19500 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-01-22T21:55:28.685+01:00  INFO 19500 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-01-22T21:55:28.686+01:00  INFO 19500 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-01-22T21:55:28.845+01:00 DEBUG 19500 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : select o1_0.id,o1_0.acronym,o1_0.name from organization o1_0
+2024-01-22T21:55:29.230+01:00 DEBUG 19500 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : select o1_0.id,o1_0.acronym,o1_0.name from organization o1_0 where o1_0.acronym=?
+2024-01-22T21:55:29.247+01:00 DEBUG 19500 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : select o1_0.id,o1_0.acronym,o1_0.name from organization o1_0 where o1_0.acronym=?
+2024-01-22T21:55:29.253+01:00 DEBUG 19500 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : select d1_0.organization_id,d1_1.id,d1_1.name from organization_dorm d1_0 join dorm d1_1 on d1_1.id=d1_0.dorm_id where d1_0.organization_id=?
+2024-01-22T21:55:29.904+01:00 DEBUG 19500 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.email=?
+2024-01-22T21:55:29.986+01:00 DEBUG 19500 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : select d1_0.id,d1_0.name from dorm d1_0 where d1_0.name=?
+2024-01-22T21:55:29.995+01:00 DEBUG 19500 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.id=?
+2024-01-22T21:55:30.006+01:00 DEBUG 19500 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : select d1_0.id,d1_0.name from dorm d1_0 where d1_0.id=?
+2024-01-22T21:55:30.010+01:00 DEBUG 19500 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : select d1_0.user_id,d1_1.id,d1_1.name from user_dorm d1_0 join dorm d1_1 on d1_1.id=d1_0.dorm_id where d1_0.user_id=?
+2024-01-22T21:55:30.022+01:00 DEBUG 19500 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.email=?
+2024-01-22T21:55:30.105+01:00 DEBUG 19500 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : select b1_0.id,b1_0.description,b1_0.dorm_id,b1_0.is_solved,b1_0.request_date,b1_0.user_id from breakdowns b1_0
+2024-01-22T21:55:30.108+01:00 DEBUG 19500 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : select d1_0.id,d1_0.name from dorm d1_0 where d1_0.id=?
+2024-01-22T21:55:30.110+01:00 DEBUG 19500 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from users u1_0 where u1_0.id=?
+2024-01-22T21:55:33.406+01:00 DEBUG 19500 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : select b1_0.id,b1_0.description,d1_0.id,d1_0.name,b1_0.is_solved,b1_0.request_date,u1_0.id,u1_0.email,u1_0.first_name,u1_0.last_name,u1_0.password,u1_0.role,u1_0.room_number from breakdowns b1_0 left join dorm d1_0 on d1_0.id=b1_0.dorm_id left join users u1_0 on u1_0.id=b1_0.user_id where b1_0.id=?
+2024-01-22T21:55:33.416+01:00 DEBUG 19500 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : delete from breakdowns where id=?
+2024-01-22T21:55:33.427+01:00 DEBUG 19500 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : select b1_0.id,b1_0.description,b1_0.dorm_id,b1_0.is_solved,b1_0.request_date,b1_0.user_id from breakdowns b1_0

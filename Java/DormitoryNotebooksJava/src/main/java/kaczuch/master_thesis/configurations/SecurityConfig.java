@@ -20,51 +20,50 @@ import kaczuch.master_thesis.service.CustomUserDetailsService;
 public class SecurityConfig {
 
 
+    @Autowired
+    CustomSuccessHandler customSuccessHandler;
 
-	@Autowired
-	CustomSuccessHandler customSuccessHandler;
-	
-	@Autowired
-	CustomUserDetailsService customUserDetailsService;
-	
-	@Bean
-	public static PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
-	
-	
-	@Bean
-	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
-		String[] pagesNotRequireLogIn = {
-				"/css/**",
-				"/img/**",
-				"/js/**",
-				"/registration",
-				"/add_user_to_organization",
-				"/add_user_to_dorm",
-				"/set_organization",
-				"/organizations",
-				"/login_page",
-				"/create_user"
-		};
+    @Autowired
+    CustomUserDetailsService customUserDetailsService;
 
-		http.csrf(c -> c.disable())
-		.authorizeHttpRequests(request -> request.requestMatchers("/admin-page")
-				.hasAuthority("ADMIN").requestMatchers("/user_dashboard","breakdowns").hasAnyAuthority("USER","PORTER")
-				.requestMatchers(pagesNotRequireLogIn).permitAll()
-				.anyRequest().authenticated())
-		.formLogin(form -> form.loginPage("/login_page").loginProcessingUrl("/login")
-				.successHandler(customSuccessHandler).permitAll())
-		.logout(form -> form.invalidateHttpSession(true).clearAuthentication(true)
-				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-				.logoutSuccessUrl("/login_page").permitAll());
-		return http.build();
-		
-	}
-	
-	@Autowired
-	public void configure (AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(customUserDetailsService).passwordEncoder(passwordEncoder());
-	}
+    @Bean
+    public static PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        String[] pagesNotRequireLogIn = {
+                "/css/**",
+                "/img/**",
+                "/js/**",
+                "/registration",
+                "/add_user_to_organization",
+                "/add_user_to_dorm",
+                "/set_organization",
+                "/organizations",
+                "/login_page",
+                "/create_user"
+        };
+
+        http.csrf(c -> c.disable())
+                .authorizeHttpRequests(request -> request.requestMatchers("/admin-page")
+                        .hasAuthority("ADMIN").requestMatchers("/user_dashboard", "breakdowns", "/remove_breakdown").hasAnyAuthority("USER", "PORTER")
+                        .requestMatchers(pagesNotRequireLogIn).permitAll()
+                        .anyRequest().authenticated())
+                .formLogin(form -> form.loginPage("/login_page").loginProcessingUrl("/login")
+                        .successHandler(customSuccessHandler).permitAll())
+                .logout(form -> form.invalidateHttpSession(true).clearAuthentication(true)
+                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                        .logoutSuccessUrl("/login_page").permitAll());
+        return http.build();
+
+    }
+
+    @Autowired
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(customUserDetailsService).passwordEncoder(passwordEncoder());
+    }
 
 }
