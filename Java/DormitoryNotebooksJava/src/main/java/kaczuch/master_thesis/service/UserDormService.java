@@ -34,7 +34,7 @@ public class UserDormService {
     }
 
     @Transactional
-    public void addUserToDorm(Long userId, Integer dormID) {
+    public void addUserToDorm(Long userId, Long dormID) {
         User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
         Dorm dorm = organizationRepository.findById(dormID).orElseThrow(() -> new RuntimeException("Dorm not found"));
 
