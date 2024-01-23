@@ -1,16 +1,21 @@
 .home-button {
     background: radial-gradient(rgb(255, 230, 221), #e59f82, rgb(219, 119, 79), rgb(205, 68, 13));
+    border: none;
     border-radius: 16px;
-    width: 100%;
-    padding: 40% 10% 40% 10%;
-    margin-bottom: 10%;
     color: black;
     font-size: calc(1vmin + 1vw);
+    /* Size of the button */
+    width: 20vmin; /* or another value that suits your design */
+    height: 20vmin; /* this makes the button square */
+    /* Flexbox for centering the text */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.8), -5px -5px 10px rgba(0, 0, 0, 0.2)
 }
 
-
-
-.col-sm-6
-{
-    width: 10%;
+/* Adjust the width of the columns to fit content */
+.col-sm-6 {
+    flex: 0 0 auto; /* Do not grow or shrink */
+    margin: 1%; /* Adjust the margin as needed */
 }
