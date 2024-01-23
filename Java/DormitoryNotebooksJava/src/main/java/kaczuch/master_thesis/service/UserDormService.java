@@ -11,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class UserDormService {
     private static final Logger logger = LoggerFactory.getLogger(UserDormService.class);
@@ -44,5 +47,27 @@ public class UserDormService {
         } else {
             logger.warn("\n\n\nUser {} already added to dorm {}\n\n\n", userId, dormID);
         }
+    }
+
+    @Transactional(readOnly = true)
+    public List<Long> getDormIdsForUser(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new EntityNotFoundException("User not found"));
+
+        // Assuming the User entity has a method getDorms()
+        // that returns a collection of Dorm entities
+        return user.getDorms().stream()
+                .map(Dorm::getId) // Extracts the ID of each Dorm
+                .collect(Collectors.toList());
+    }
+
+    @Transactional(readOnly = true)
+    public List<Dorm> getDormsForUser(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new EntityNotFoundException("User not found"));
+
+        // Assuming the User entity has a method getDorms()
+        // that returns a collection of Dorm entities
+        return user.getDorms().stream().toList();
     }
 }

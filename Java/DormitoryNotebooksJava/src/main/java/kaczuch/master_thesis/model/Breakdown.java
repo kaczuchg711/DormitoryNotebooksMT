@@ -9,6 +9,7 @@ import java.util.Date;
 public class Breakdown {
 
     @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
     @Column(length = 600)
@@ -28,6 +29,17 @@ public class Breakdown {
     @Column(name = "requestDate")
     private Date requestDate;
 
+    public Breakdown(String description, Boolean isSolved, Dorm dorm, User user, Date requestDate) {
+        this.description = description;
+        this.isSolved = isSolved;
+        this.dorm = dorm;
+        this.user = user;
+        this.requestDate = requestDate;
+    }
+
+    public Breakdown() {
+        super();
+    }
 
     public void setId(Long id) {
         this.id = id;

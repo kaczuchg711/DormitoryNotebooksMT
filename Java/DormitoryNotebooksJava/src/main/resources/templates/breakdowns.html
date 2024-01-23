@@ -38,10 +38,8 @@
 <section>
     <div class="row">
         <div class="col-sm-12" style="text-align: center">
-            <form class="align-items-center center-div" method="post"
-                  action=/request_breakdown/><input type="hidden" name="csrfmiddlewaretoken" value="XP3qScYH5ovw3Hwor9PszPyQH1ZcnAv3Sa4R4Ifv00ljpPnRyvv3w1F5IZsGMPI1">
-                <input type="text" name="description" style="width:40%" placeholder="Opis awarii" required id="id_description">
-                <br>
+            <form class="align-items-center center-div"  th:action="@{/request_breakdown}" method="post">
+                <input type="text" name="description" style="width:40%" placeholder="Opis awarii" required id="id_description"><br>
                 <button type="submit" name="submit">Zgłoś awarię</button>
             </form>
         </div>

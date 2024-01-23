@@ -13,6 +13,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.ui.Model;
+import org.springframework.web.servlet.ModelAndView;
 
 @Service
 public class CustomSuccessHandler implements AuthenticationSuccessHandler {
@@ -30,6 +31,8 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
         String dormName = request.getParameter("dorm");
 
         Optional<Dorm> dorm = dormService.getDormByName(dormName);
+
+//        modelAndView.addObject("dorm",dormName);
 
         if (dorm.isPresent() && authentication.getPrincipal() instanceof CustomUserDetail) {
             CustomUserDetail user = (CustomUserDetail) authentication.getPrincipal();

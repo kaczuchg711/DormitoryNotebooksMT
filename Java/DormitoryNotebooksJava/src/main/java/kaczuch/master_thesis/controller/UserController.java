@@ -98,7 +98,8 @@ public class UserController {
 	}
 
 	@GetMapping("/organizations")  // Map this method to handle requests to /organizations
-	public String handleOrganizationsUrlRequest(Model model) {
+	public String handleOrganizationsUrlRequest(Model model, ModelAndView modelAndView) {
+		modelAndView.addObject("stefan", "Jestem stefan");
 		List<Organization> organizations = organizationRepository.findAll();
 		model.addAttribute("organizations", organizations);
 		return "organizations";

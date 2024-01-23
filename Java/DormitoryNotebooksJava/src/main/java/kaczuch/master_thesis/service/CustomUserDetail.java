@@ -26,6 +26,10 @@ public class CustomUserDetail implements UserDetails {
 		return List.of(() -> user.getRole());
 	}
 
+	public User getUser() {
+		return user;
+	}
+
 	public String getRole() {
 		return user.getRole();
 	}

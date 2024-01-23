@@ -1,3 +1,4 @@
+ ./kill_the_spring.sh
 echo "start mvn clean instal"
 mvn clean install
 repeat_command "echo" 10

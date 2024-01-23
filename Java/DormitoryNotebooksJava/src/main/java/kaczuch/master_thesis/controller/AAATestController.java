@@ -8,6 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Enumeration;
+import java.util.Map;
 
 @Controller
 public class AAATestController {
@@ -46,18 +50,19 @@ public class AAATestController {
     public String create_user(HttpServletRequest request) throws Exception {
         String rawPassword = "userPassword";
         String encodedPassword = passwordEncoder.encode(rawPassword);
-        User user = new User("c@c.com", encodedPassword, "USER", "Stefan", "Stefanowski");
+        User user = new User("d@d.com", encodedPassword, "USER", "Bogdan", "Stefanowski");
         userRepository.save(user);
 
         Long dormID;
-        if (dormService.getDormByName("Bydgoska").isPresent())
-            dormID = dormService.getDormByName("Bydgoska").get().getId();
+        String dorm = "Akademik A";
+        if (dormService.getDormByName(dorm).isPresent())
+            dormID = dormService.getDormByName(dorm).get().getId();
         else throw new Exception("Dorm not found ");
-        add_user_to_dorm(user.getId(), dormService.getDormByName("Bydgoska").get().getId());
+        add_user_to_dorm(user.getId(), dormID);
 
         Long organizationID;
-        if (organizationService.findByAcronym("PK").isPresent())
-            organizationID = organizationService.findByAcronym("PK").get().getId();
+        if (organizationService.findByAcronym("UJ").isPresent())
+            organizationID = organizationService.findByAcronym("UJ").get().getId();
         else throw new Exception("Organization not found");
         add_user_to_organization(user.getId(), organizationID);
 
@@ -65,5 +70,22 @@ public class AAATestController {
         return "redirect:" + (referer != null ? referer : "/organizations");
     }
 
+    public static void printAllObjectsInModelAndView(ModelAndView modelAndView)
+    {
+        Map<String, Object> modelMap = modelAndView.getModel();
+        for (Map.Entry<String, Object> entry : modelMap.entrySet()) {
+            System.out.println(entry.getKey() + " = " + entry.getValue());
+        }
+    }
+
+    public static void printRequestParameters(HttpServletRequest request) {
+        Enumeration<String> parameterNames = request.getParameterNames();
+
+        while (parameterNames.hasMoreElements()) {
+            String paramName = parameterNames.nextElement();
+            String paramValue = request.getParameter(paramName);
+            System.out.println(paramName + ": " + paramValue);
+        }
+    }
 
 }

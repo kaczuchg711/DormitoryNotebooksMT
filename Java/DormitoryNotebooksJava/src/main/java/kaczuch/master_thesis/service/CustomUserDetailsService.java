@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import kaczuch.master_thesis.model.User;
 import kaczuch.master_thesis.repositories.UserRepository;
 
+import java.util.Optional;
+
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 	
@@ -25,6 +27,11 @@ public class CustomUserDetailsService implements UserDetailsService {
 
 		return new CustomUserDetail(user);
 
+	}
+
+	public Optional<User> findById(Long id)
+	{
+		return userRepository.findById(id);
 	}
 
 }

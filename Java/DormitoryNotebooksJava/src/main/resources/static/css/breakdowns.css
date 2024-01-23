@@ -6,3 +6,7 @@ div.table_container {
 .input-container {
     max-width: 30%;
 }
+
+#id_description {
+    width: 40%;
+}
