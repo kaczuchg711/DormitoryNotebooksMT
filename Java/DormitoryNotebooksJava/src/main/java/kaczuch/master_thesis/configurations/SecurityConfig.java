@@ -44,7 +44,8 @@ public class SecurityConfig {
                 "/set_organization",
                 "/organizations",
                 "/login_page",
-                "/create_user"
+                "/create_user",
+                "/add_item_to_rent"
         };
 
         http.csrf(c -> c.disable())

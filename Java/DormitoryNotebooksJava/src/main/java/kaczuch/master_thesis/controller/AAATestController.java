@@ -1,6 +1,7 @@
 package kaczuch.master_thesis.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
+import kaczuch.master_thesis.model.Dorm;
 import kaczuch.master_thesis.model.User;
 import kaczuch.master_thesis.repositories.UserRepository;
 import kaczuch.master_thesis.service.*;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Enumeration;
 import java.util.Map;
+import java.util.Optional;
 
 @Controller
 public class AAATestController {
@@ -33,6 +35,28 @@ public class AAATestController {
 
     @Autowired
     private OrganizationService organizationService;
+
+    @Autowired
+    private ItemToRentService itemToRentService;
+
+    @GetMapping("/add_item_to_rent")
+    public String addItemToRent(HttpServletRequest request) throws Exception {
+        Optional<Dorm> dormOpt = dormService.getDormByName("Bydgoska");
+        Dorm dorm;
+        if (dormOpt.isPresent()) {
+            dorm = dormOpt.get();
+            itemToRentService.createItemToRent("Odkurzacz", dorm);
+            itemToRentService.createItemToRent("Odkurzacz", dorm);
+            itemToRentService.createItemToRent("Odkurzacz", dorm);
+            itemToRentService.createItemToRent("Miotła", dorm);
+            itemToRentService.createItemToRent("Pralka", dorm);
+            itemToRentService.createItemToRent("Pralka", dorm);
+            String referer = request.getHeader("Referer");
+            return "redirect:" + (referer != null ? referer : "/organizations");
+        } else {
+            throw new Exception("dorm not found");
+        }
+    }
 
     @GetMapping("/add_user_to_organization")
     public String add_user_to_organization(Long userid, Long organizationId) {
@@ -70,8 +94,7 @@ public class AAATestController {
         return "redirect:" + (referer != null ? referer : "/organizations");
     }
 
-    public static void printAllObjectsInModelAndView(ModelAndView modelAndView)
-    {
+    public static void printAllObjectsInModelAndView(ModelAndView modelAndView) {
         Map<String, Object> modelMap = modelAndView.getModel();
         for (Map.Entry<String, Object> entry : modelMap.entrySet()) {
             System.out.println(entry.getKey() + " = " + entry.getValue());
