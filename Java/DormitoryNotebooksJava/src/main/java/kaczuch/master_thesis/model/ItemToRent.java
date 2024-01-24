@@ -59,4 +59,5 @@ public class ItemToRent {
     public void setDorm(Dorm dorm) {
         this.dorm = dorm;
     }
+
 }

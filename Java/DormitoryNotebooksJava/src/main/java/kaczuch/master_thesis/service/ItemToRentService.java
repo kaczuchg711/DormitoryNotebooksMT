@@ -39,4 +39,13 @@ public class ItemToRentService {
         return itemToRentRepository.findAll();
     }
 
+    public List<ItemToRent> getItemsByNameAndDormId (String filterName,Long dormId)
+    {
+        return itemToRentRepository.findByNameContainingAndDormId(filterName, dormId);
+    }
+
+    public List<ItemToRent> getAvailableItemsInDormByName(Long dormId, String itemName) {
+        return itemToRentRepository.findAvailableItemsByNameAndDormId(dormId, itemName);
+    }
+
 }

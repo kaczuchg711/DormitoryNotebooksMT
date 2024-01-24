@@ -34,6 +34,12 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        String[] pagesRequireLogIn = {
+                "/user_dashboard",
+                "/breakdowns",
+                "/remove_breakdown",
+                "/request_breakdown"};
+
         String[] pagesNotRequireLogIn = {
                 "/css/**",
                 "/img/**",
@@ -48,11 +54,19 @@ public class SecurityConfig {
                 "/add_item_to_rent"
         };
 
+
         http.csrf(c -> c.disable())
-                .authorizeHttpRequests(request -> request.requestMatchers("/admin-page")
-                        .hasAuthority("ADMIN").requestMatchers("/user_dashboard", "breakdowns", "/remove_breakdown" , "/request_breakdown").hasAnyAuthority("USER", "PORTER")
-                        .requestMatchers(pagesNotRequireLogIn).permitAll()
-                        .anyRequest().authenticated())
+                .authorizeHttpRequests(request ->
+                {
+                    request
+                            .requestMatchers("/admin-page")
+                            .hasAuthority("ADMIN")
+                            .requestMatchers(pagesRequireLogIn)
+                            .hasAnyAuthority("USER", "PORTER")
+                            .requestMatchers(pagesNotRequireLogIn)
+                            .permitAll()
+                            .anyRequest().authenticated();
+                })
                 .formLogin(form -> form.loginPage("/login_page").loginProcessingUrl("/login")
                         .successHandler(customSuccessHandler).permitAll())
                 .logout(form -> form.invalidateHttpSession(true).clearAuthentication(true)

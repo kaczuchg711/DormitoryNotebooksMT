@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="~{layout :: common-head('rental_page','rental_page')}"></head>
+<body>
+<h2>Wypożyczalnia</h2>
+<div class="table_container">
+    <table class="table table-striped text-center">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Room Number</th>
+            <th>Date</th>
+            <th>Time</th>
+        </tr>
+        <tr th:each="detail : ${rentalDetails}">
+            <td th:text="${detail.firstName}"></td>
+            <td th:text="${detail.lastName}"></td>
+            <td th:text="${detail.roomNumber}"></td>
+            <td th:text="${detail.date}"></td>
+            <td th:text="${detail.time}"></td>
+        </tr>
+    </table>
+    <section>
+        <div class="row">
+            <div class="col-sm-12" style="text-align: center">
+<!--                todo -->
+                <form class="align-items-center center-div"  th:action="@{/request_rent}" method="post">
+                    <select name="selectedItem">
+                        <option th:each="item : ${availableItems}"
+                                th:value="${item.id}"
+                                th:text="${item.number + ' ' + item.name}">
+                            Item Number and Name
+                        </option>
+                    </select>
+                    <button type="submit" name="submit">Wypożycz</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+</html>
