@@ -16,5 +16,10 @@ public class RentalService {
     {
         return rentalRepository.findAllRentInDorm(dormID, itemNameToRent);
     }
+//
+//    public List<Rental> findAllRentConcreteItemRentByUser(Long userId, String itemNameToRent)
+//    {
+//        return rentalRepository.findAllRentConcreteItemRentByUser(userId, itemNameToRent);
+//    }
 
 }

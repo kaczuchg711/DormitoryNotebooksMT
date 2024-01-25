@@ -17,4 +17,10 @@ public interface RentalRepository extends JpaRepository<Rental, Long> {
             "INNER JOIN item_to_rent it ON r.item_id = it.id " +
             "WHERE ud.dorm_id = :dormId AND it.name = :itemName", nativeQuery = true)
     List<Rental> findAllRentInDorm(@Param("dormId") Long dormId, @Param("itemName") String itemName);
+
+//    @Query(value = "SELECT r.* FROM rental r " +
+//            "INNER JOIN user_dorm ud ON r.user_id = ud.user_id " +
+//            "INNER JOIN item_to_rent it ON r.item_id = it.id " +
+//            "WHERE ud.dorm_id = :dormId AND it.name = :itemName", nativeQuery = true)
+//    List<Rental> findAllRentConcreteItemRentByUser(@Param("userId")Long userId, @Param("itemName")String itemNameToRent);
 }

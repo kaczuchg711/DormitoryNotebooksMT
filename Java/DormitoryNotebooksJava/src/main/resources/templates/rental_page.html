@@ -22,7 +22,7 @@
     </table>
     <section>
         <div class="row">
-            <div class="col-sm-12" style="text-align: center">
+            <div th:if="${!userRentNowItem}" class="col-sm-12" style="text-align: center">
                 <form class="align-items-center center-div"  th:action="@{/rent_item}" method="post">
                     <select name="selectedItem">
                         <option th:each="item : ${availableItems}"
@@ -32,6 +32,12 @@
                         </option>
                     </select>
                     <button type="submit" name="submit">Wypożycz</button>
+                </form>
+            </div>
+            <div th:if="${userRentNowItem}" class="col-sm-12" style="text-align: center">
+                <form class="align-items-center center-div"  th:action="@{/return_item}" method="post">
+                    <input type="hidden" name="item_name" th:value="${param.item}">
+                    <button type="submit" name="submit">Zwróć przedmiot</button>
                 </form>
             </div>
         </div>
