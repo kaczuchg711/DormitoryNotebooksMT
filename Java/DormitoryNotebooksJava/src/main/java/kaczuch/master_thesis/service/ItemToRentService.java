@@ -2,11 +2,13 @@ package kaczuch.master_thesis.service;
 
 import kaczuch.master_thesis.model.Dorm;
 import kaczuch.master_thesis.model.ItemToRent;
+import kaczuch.master_thesis.model.User;
 import kaczuch.master_thesis.repositories.ItemToRentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ItemToRentService {
@@ -48,4 +50,11 @@ public class ItemToRentService {
         return itemToRentRepository.findAvailableItemsByNameAndDormId(dormId, itemName);
     }
 
+    public Optional<ItemToRent> findById(Long id)
+    {
+        return itemToRentRepository.findById(id);
+    }
+
+    public void save(ItemToRent item) {
+    }
 }

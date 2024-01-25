@@ -16,7 +16,7 @@
             </div>
 
             <div class="col-auto" th:each="itemName : ${uniqueItemsNames}">
-                <form th:action="@{/rent}" method="GET">
+                <form th:action="@{/rent_page}" method="GET">
                     <button class="home-button" th:value="${itemName}" name="item" th:text="'Wypożyczyć ' + ${itemName}"></button>
                 </form>
             </div>

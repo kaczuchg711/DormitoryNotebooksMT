@@ -6,6 +6,8 @@ import kaczuch.master_thesis.model.User;
 import kaczuch.master_thesis.repositories.UserRepository;
 import kaczuch.master_thesis.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -109,6 +111,17 @@ public class AAATestController {
             String paramValue = request.getParameter(paramName);
             System.out.println(paramName + ": " + paramValue);
         }
+    }
+
+    public static CustomUserDetail getLoggedUser() throws Exception {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.isAuthenticated()) {
+            Object principal = authentication.getPrincipal();
+            if (principal instanceof CustomUserDetail) {
+                return (CustomUserDetail) principal;
+            }
+        }
+        throw new Exception("Logged user not found");
     }
 
 }

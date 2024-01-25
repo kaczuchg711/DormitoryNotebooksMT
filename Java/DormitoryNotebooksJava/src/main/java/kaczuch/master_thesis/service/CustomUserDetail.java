@@ -3,81 +3,85 @@ package kaczuch.master_thesis.service;
 import java.util.Collection;
 import java.util.List;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import kaczuch.master_thesis.model.User;
 
 public class CustomUserDetail implements UserDetails {
-	
-	private User user;
 
-	public int getRoomNumber() {
-		return user.getRoomNumber();
-	}
+    private User user;
 
-	public CustomUserDetail(User user) {
-		this.user = user;
-	}
+    public int getRoomNumber() {
+        return user.getRoomNumber();
+    }
 
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
-		return List.of(() -> user.getRole());
-	}
+    public CustomUserDetail(User user) {
+        this.user = user;
+    }
 
-	public User getUser() {
-		return user;
-	}
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        // TODO Auto-generated method stub
+        return List.of(() -> user.getRole());
+    }
 
-	public String getRole() {
-		return user.getRole();
-	}
-	
-	public String getFirstName() {
-		return user.getFirstName();
-	}
+    public User getUser() {
+        return user;
+    }
 
-	public String getLastName() {
-		return user.getFirstName();
-	}
+    public String getRole() {
+        return user.getRole();
+    }
 
-	@Override
-	public String getPassword() {
-		return user.getPassword();
-	}
+    public String getFirstName() {
+        return user.getFirstName();
+    }
 
-	@Override
-	public String getUsername() {
-		// TODO Auto-generated method stub
-		return user.getEmail();
-	}
+    public String getLastName() {
+        return user.getFirstName();
+    }
 
-	@Override
-	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
-		return true;
-	}
+    @Override
+    public String getPassword() {
+        return user.getPassword();
+    }
 
-	@Override
-	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
-		return true;
-	}
+    @Override
+    public String getUsername() {
+        // TODO Auto-generated method stub
+        return user.getEmail();
+    }
 
-	@Override
-	public boolean isCredentialsNonExpired() {
-		// TODO Auto-generated method stub
-		return true;
-	}
+    @Override
+    public boolean isAccountNonExpired() {
+        // TODO Auto-generated method stub
+        return true;
+    }
 
-	@Override
-	public boolean isEnabled() {
-		// TODO Auto-generated method stub
-		return true;
-	}
+    @Override
+    public boolean isAccountNonLocked() {
+        // TODO Auto-generated method stub
+        return true;
+    }
 
-	public Long getId() {
-		return user.getId();
-	}
+    @Override
+    public boolean isCredentialsNonExpired() {
+        // TODO Auto-generated method stub
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        // TODO Auto-generated method stub
+        return true;
+    }
+
+    public Long getId() {
+        return user.getId();
+    }
+
+
 }

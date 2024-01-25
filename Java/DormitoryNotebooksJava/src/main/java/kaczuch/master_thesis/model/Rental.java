@@ -22,6 +22,19 @@ public class Rental {
     private LocalTime rentHour;
     private LocalTime returnHour;
 
+    public Rental(User user, ItemToRent item, LocalDate rentalDate, LocalTime rentHour, LocalTime returnHour) {
+        this.user = user;
+        this.item = item;
+        this.rentalDate = rentalDate;
+        this.rentHour = rentHour;
+        this.returnHour = returnHour;
+    }
+
+    public Rental() {
+        super();
+    }
+
+
     public void setId(Long id) {
         this.id = id;
     }

@@ -23,8 +23,7 @@
     <section>
         <div class="row">
             <div class="col-sm-12" style="text-align: center">
-<!--                todo -->
-                <form class="align-items-center center-div"  th:action="@{/request_rent}" method="post">
+                <form class="align-items-center center-div"  th:action="@{/rent_item}" method="post">
                     <select name="selectedItem">
                         <option th:each="item : ${availableItems}"
                                 th:value="${item.id}"
