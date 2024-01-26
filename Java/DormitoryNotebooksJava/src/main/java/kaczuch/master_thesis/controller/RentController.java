@@ -81,7 +81,6 @@ public class RentController {
                         rental.getReturnHour() == null);
 
 
-
         List<ItemToRent> availableItems = itemToRentService.getAvailableItemsInDormByName(dormId, itemNameToRent);
         ModelAndView modelAndView = new ModelAndView("rental_page");
         modelAndView.addObject("rentalDetails", rentalDetails);
@@ -123,13 +122,35 @@ public class RentController {
 
         CustomUserDetail customUserDetail = getLoggedUser();
 
-        
+
         Long userId = customUserDetail.getId();
         String itemName = request.getParameter("item_name");
 
-        // todo edit rent
-//        rentalService.findAllRentConcreteItemRentByUser(userId,)
-    //        todo change item to available
+        if(rentalService.findAllRentConcreteItemRentByUser(userId, itemName).size() != 1)
+        {
+            System.out.println("AAAAAAAAAAAAAAA");
+            System.out.println("AAAAAAAAAAAAAAA");
+            System.out.println("AAAAAAAAAAAAAAA");
+            System.out.println("AAAAAAAAAAAAAAA");
+            System.out.println("AAAAAAAAAAAAAAA");
+            System.out.println("AAAAAAAAAAAAAAA");
+            throw new Exception("Zupa była za słona");
+        }
+        Rental rental = rentalService.findAllRentConcreteItemRentByUser(userId, itemName).get(0);
+        ItemToRent itemToRent = rental.getItem();
+
+        rental.setReturnHour(LocalTime.now());
+        itemToRent.setAvailable(true);
+        System.out.println("AAAAAAAAAAAAA");
+        System.out.println("AAAAAAAAAAAAA");
+        System.out.println("AAAAAAAAAAAAA");
+        System.out.println(itemToRent.getId());
+        System.out.println("AAAAAAAAAw32313123AAAA");
+        System.out.println("AAAAAAAAAAAAA");
+        System.out.println("AAAAAAAAAAAAA");
+
+        itemToRentRepository.save(itemToRent);
+        rentalRepository.save(rental);
 
         return new ModelAndView("redirect:/rent_page?item=" + "odkurzacz");
     }
