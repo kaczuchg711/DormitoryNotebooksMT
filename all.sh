@@ -1,1 +1,2 @@
-eval pycharm Python & idea Java/DormitoryNotebooksJava & echo "good job"
+./kill_jetbrains
+idea Java/DormitoryNotebooksJava & eval pycharm Python
