@@ -126,7 +126,7 @@ public class UserController {
     @GetMapping("user_dashboard")
     public String userPage(Model model, HttpServletRequest request) throws Exception {
         CustomUserDetail userDetails;
-        Long currentUserId;
+        Integer currentUserId;
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.isAuthenticated()) {
             Object principal = authentication.getPrincipal();

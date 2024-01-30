@@ -39,7 +39,7 @@ public class BreakdownsController {
 
     @GetMapping("/breakdowns")
     public ModelAndView giveBreakdownView() {
-        Long currentUserId = null;
+        Integer currentUserId = null;
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.isAuthenticated()) {
             Object principal = authentication.getPrincipal();
@@ -49,7 +49,7 @@ public class BreakdownsController {
             }
         }
 
-        List<Long> userDormIds = userDormService.getDormIdsForUser(currentUserId);
+        List<Integer> userDormIds = userDormService.getDormIdsForUser(currentUserId);
 
         List<Breakdown> breakdownList = breakdownService.findAll();
         List<Breakdown> filteredBreakdownList = breakdownList.stream()
@@ -98,7 +98,7 @@ public class BreakdownsController {
 
     @PostMapping("/remove_breakdown")
     public ModelAndView removeBreakdown(HttpServletRequest request) {
-        Long brakeDownIdToRemove = Long.valueOf(request.getParameter("breakdownId"));
+        Integer brakeDownIdToRemove = Integer.valueOf(request.getParameter("breakdownId"));
         breakdownService.deleteById(brakeDownIdToRemove);
         return new ModelAndView("redirect:/breakdowns");
 
@@ -108,7 +108,7 @@ public class BreakdownsController {
     public ModelAndView requestBreakdown(HttpServletRequest request) throws Exception {
         String description = request.getParameter("description");
         CustomUserDetail userDetails;
-        Long currentUserId;
+        Integer currentUserId;
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.isAuthenticated()) {
             Object principal = authentication.getPrincipal();

@@ -11,8 +11,8 @@ import java.util.Optional;
 public interface OrganizationRepository extends JpaRepository<Organization, Integer> {
 
     Optional<Organization> findByAcronym(String organizationAcronym);
-    Optional<Organization> findById(Long id);
+    Optional<Organization> findById(Integer id);
 
     // Find organizations by user
-    List<Organization> findByUsers_Id(Long userId);
+    List<Organization> findByUsers_Id(Integer userId);
 }

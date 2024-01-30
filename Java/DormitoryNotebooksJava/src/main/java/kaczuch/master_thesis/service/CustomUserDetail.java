@@ -14,7 +14,7 @@ public class CustomUserDetail implements UserDetails {
 
     private User user;
 
-    public int getRoomNumber() {
+    public Integer getRoomNumber() {
         return user.getRoomNumber();
     }
 
@@ -79,7 +79,7 @@ public class CustomUserDetail implements UserDetails {
         return true;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return user.getId();
     }
 

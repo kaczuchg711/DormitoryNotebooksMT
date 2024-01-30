@@ -52,7 +52,7 @@ public class RentController {
 
         String itemNameToRent = request.getParameter("item");
         CustomUserDetail userDetails;
-        Long currentUserId;
+        Integer currentUserId;
 
         CustomUserDetail userDetail = getLoggedUser();
         currentUserId = userDetail.getId();
@@ -62,7 +62,7 @@ public class RentController {
 
         List<Dorm> userDorms = userDormService.getDormsForUser(currentUserId);
         Dorm userDorm = userDorms.get(0);
-        Long dormId = userDorm.getId();
+        Integer dormId = userDorm.getId();
 
         List<Rental> rentals = rentalService.findAllRentInDorm(userDorm.getId(), itemNameToRent);
         List<RentalDetailsDTO> rentalDetails = rentals.stream().map(rental -> {
@@ -96,7 +96,10 @@ public class RentController {
     public ModelAndView handleRent(HttpServletRequest request) throws Exception {
         AAATestController.printRequestParameters(request);
 
-        Long selectedItemId = Long.valueOf(request.getParameter("selectedItem"));
+
+        Integer selectedItemId = Integer.valueOf(request.getParameter("selectedItem"));
+
+
         CustomUserDetail userDetail = getLoggedUser();
 
 
@@ -118,40 +121,22 @@ public class RentController {
 
     @PostMapping("/return_item")
     public ModelAndView returnItem(HttpServletRequest request, ModelAndView modelAndView) throws Exception {
-
-
         CustomUserDetail customUserDetail = getLoggedUser();
-
-
-        Long userId = customUserDetail.getId();
+        Integer userId = customUserDetail.getId();
         String itemName = request.getParameter("item_name");
 
-        if(rentalService.findAllRentConcreteItemRentByUser(userId, itemName).size() != 1)
-        {
-            System.out.println("AAAAAAAAAAAAAAA");
-            System.out.println("AAAAAAAAAAAAAAA");
-            System.out.println("AAAAAAAAAAAAAAA");
-            System.out.println("AAAAAAAAAAAAAAA");
-            System.out.println("AAAAAAAAAAAAAAA");
-            System.out.println("AAAAAAAAAAAAAAA");
-            throw new Exception("Zupa była za słona");
-        }
+        if (rentalService.findAllRentConcreteItemRentByUser(userId, itemName).size() != 1)
+            throw new Exception("findAllRentConcreteItemRentByUser return more that one object");
         Rental rental = rentalService.findAllRentConcreteItemRentByUser(userId, itemName).get(0);
         ItemToRent itemToRent = rental.getItem();
 
         rental.setReturnHour(LocalTime.now());
         itemToRent.setAvailable(true);
-        System.out.println("AAAAAAAAAAAAA");
-        System.out.println("AAAAAAAAAAAAA");
-        System.out.println("AAAAAAAAAAAAA");
         System.out.println(itemToRent.getId());
-        System.out.println("AAAAAAAAAw32313123AAAA");
-        System.out.println("AAAAAAAAAAAAA");
-        System.out.println("AAAAAAAAAAAAA");
 
         itemToRentRepository.save(itemToRent);
         rentalRepository.save(rental);
 
-        return new ModelAndView("redirect:/rent_page?item=" + "odkurzacz");
+        return new ModelAndView("redirect:/rent_page?item=" + itemToRent.getName());
     }
 }

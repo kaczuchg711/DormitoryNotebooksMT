@@ -2,6 +2,7 @@ package kaczuch.master_thesis.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import kaczuch.master_thesis.model.Dorm;
+import kaczuch.master_thesis.model.Organization;
 import kaczuch.master_thesis.model.User;
 import kaczuch.master_thesis.repositories.UserRepository;
 import kaczuch.master_thesis.service.*;
@@ -61,13 +62,13 @@ public class AAATestController {
     }
 
     @GetMapping("/add_user_to_organization")
-    public String add_user_to_organization(Long userid, Long organizationId) {
+    public String add_user_to_organization(Integer userid, Integer organizationId) {
         userOrganizationService.addUserToOrganization(userid, organizationId);
         return "redirect:/organization";
     }
 
     @GetMapping("/add_user_to_dorm")
-    public String add_user_to_dorm(Long userid, Long dormID) {
+    public String add_user_to_dorm(Integer userid, Integer dormID) {
         userDormServices.addUserToDorm(userid, dormID);
         return "redirect:/organization";
     }
@@ -75,24 +76,37 @@ public class AAATestController {
     @GetMapping("/create_user")
     public String create_user(HttpServletRequest request) throws Exception {
         String rawPassword = "userPassword";
-        String encodedPassword = passwordEncoder.encode(rawPassword);
-        User user = new User("d@d.com", encodedPassword, "USER", "Bogdan", "Stefanowski");
-        userRepository.save(user);
+        String mail = "b@b.com";
+        String role = "PORTER";
+        String userName = "Pan Janusz";
+        String userLastName = "Januszowski";
+        String pk = "PK";
+        String dorm = "Bydgoska";
 
-        Long dormID;
-        String dorm = "Akademik A";
+        String encodedPassword = passwordEncoder.encode(rawPassword);
+        User user = new User(mail, encodedPassword, role, userName, userLastName);
+
+        userRepository.save(user);
+        Integer dormID;
         if (dormService.getDormByName(dorm).isPresent())
             dormID = dormService.getDormByName(dorm).get().getId();
         else throw new Exception("Dorm not found ");
         add_user_to_dorm(user.getId(), dormID);
 
-        Long organizationID;
-        if (organizationService.findByAcronym("UJ").isPresent())
-            organizationID = organizationService.findByAcronym("UJ").get().getId();
+        Integer organizationID;
+        Optional<Organization> optionalOrganization = organizationService.findByAcronym(pk);
+        if (optionalOrganization.isPresent())
+            organizationID = optionalOrganization.get().getId();
         else throw new Exception("Organization not found");
         add_user_to_organization(user.getId(), organizationID);
-
+        userRepository.save(user);
         String referer = request.getHeader("Referer");
+
+        System.out.println("User created successful");
+        System.out.println("User created successful");
+        System.out.println("User created successful");
+        System.out.println("User created successful");
+
         return "redirect:" + (referer != null ? referer : "/organizations");
     }
 

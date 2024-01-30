@@ -10,15 +10,15 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ItemToRentRepository extends JpaRepository<ItemToRent, Long> {
+public interface ItemToRentRepository extends JpaRepository<ItemToRent, Integer> {
     @Query("SELECT MAX(i.number) FROM ItemToRent i WHERE i.name = :name AND i.dorm = :dorm")
     Integer findHighestNumberByItemNameAndDorm(String name, Dorm dorm);
 
     @Query("SELECT DISTINCT i.name FROM ItemToRent i WHERE i.dorm.id = :dormId")
-    List<String> findDistinctNamesByDormId(@Param("dormId") Long dormId);
+    List<String> findDistinctNamesByDormId(@Param("dormId") Integer dormId);
 
-    List<ItemToRent> findByNameContainingAndDormId(String name, Long dormId);
+    List<ItemToRent> findByNameContainingAndDormId(String name, Integer dormId);
 
     @Query(value = "SELECT it.* FROM item_to_rent it WHERE it.dorm_id = :dormId AND it.name = :itemName AND it.is_Available = true", nativeQuery = true)
-    List<ItemToRent> findAvailableItemsByNameAndDormId(@Param("dormId") Long dormId, @Param("itemName") String itemName);
+    List<ItemToRent> findAvailableItemsByNameAndDormId(@Param("dormId") Integer dormId, @Param("itemName") String itemName);
 }

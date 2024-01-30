@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface DormRepository extends JpaRepository<Dorm, Integer> {
 
     Optional<Dorm> findByName(String name);
-    Optional<Dorm> findById(Long id);
+    Optional<Dorm> findById(Integer id);
 
-    List<Dorm> findByUsers_Id(Long userId);
+    List<Dorm> findByUsers_Id(Integer userId);
 }

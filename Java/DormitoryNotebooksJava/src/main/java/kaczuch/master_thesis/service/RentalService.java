@@ -12,12 +12,12 @@ public class RentalService {
     @Autowired
     private RentalRepository rentalRepository;
 
-    public List<Rental> findAllRentInDorm(Long dormID, String itemNameToRent)
+    public List<Rental> findAllRentInDorm(Integer dormID, String itemNameToRent)
     {
         return rentalRepository.findAllRentInDorm(dormID, itemNameToRent);
     }
 
-    public List<Rental> findAllRentConcreteItemRentByUser(Long userId, String itemNameToRent)
+    public List<Rental> findAllRentConcreteItemRentByUser(Integer userId, String itemNameToRent)
     {
         return rentalRepository.findAllRentConcreteItemRentByUser(userId, itemNameToRent);
     }

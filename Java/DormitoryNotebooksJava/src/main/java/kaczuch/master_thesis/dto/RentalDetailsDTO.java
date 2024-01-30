@@ -7,7 +7,7 @@ public class RentalDetailsDTO {
 
     private String firstName;
     private String lastName;
-    private int roomNumber;
+    private Integer roomNumber;
     private LocalDate date;
     private LocalTime time;
 
@@ -17,7 +17,7 @@ public class RentalDetailsDTO {
         // Default constructor
     }
 
-    public RentalDetailsDTO(String firstName, String lastName, int roomNumber, LocalDate date, LocalTime time) {
+    public RentalDetailsDTO(String firstName, String lastName, Integer roomNumber, LocalDate date, LocalTime time) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.roomNumber = roomNumber;
@@ -43,11 +43,11 @@ public class RentalDetailsDTO {
         this.lastName = lastName;
     }
 
-    public int getRoomNumber() {
+    public Integer getRoomNumber() {
         return roomNumber;
     }
 
-    public void setRoomNumber(int roomNumber) {
+    public void setRoomNumber(Integer roomNumber) {
         this.roomNumber = roomNumber;
     }
 

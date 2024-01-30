@@ -11,8 +11,12 @@ public class Organization {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id;
+    @Column( columnDefinition = "int")
+    private Integer id;
+    @Column( length = 60)
+
     private String name;
+    @Column( length = 10)
     private String acronym;
 
     @ManyToMany
@@ -42,11 +46,11 @@ public class Organization {
         this.acronym = acronym;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
     public Set<Dorm> getDorms() {

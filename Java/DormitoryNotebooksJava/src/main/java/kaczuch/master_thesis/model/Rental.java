@@ -2,6 +2,7 @@ package kaczuch.master_thesis.model;
 
 
 import jakarta.persistence.*;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -9,8 +10,9 @@ import java.time.LocalTime;
 public class Rental {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(columnDefinition = "int")
+    private Integer id;
 
     @ManyToOne
     private User user;
@@ -35,11 +37,11 @@ public class Rental {
     }
 
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 

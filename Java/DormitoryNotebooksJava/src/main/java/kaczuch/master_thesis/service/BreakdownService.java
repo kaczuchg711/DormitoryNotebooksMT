@@ -26,7 +26,7 @@ public class BreakdownService {
     }
 
     // Method to retrieve a breakdown by its ID
-    public Optional<Breakdown> findById(Long id) {
+    public Optional<Breakdown> findById(Integer id) {
         return breakdownRepository.findById(id.intValue());
     }
 
@@ -36,7 +36,7 @@ public class BreakdownService {
     }
 
     // Method to delete a breakdown by its ID
-    public void deleteById(Long id) {
+    public void deleteById(Integer id) {
         breakdownRepository.deleteById(id.intValue());
     }
 

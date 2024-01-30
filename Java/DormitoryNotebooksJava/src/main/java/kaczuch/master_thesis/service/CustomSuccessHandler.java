@@ -36,7 +36,7 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
 
         if (dorm.isPresent() && authentication.getPrincipal() instanceof CustomUserDetail) {
             CustomUserDetail user = (CustomUserDetail) authentication.getPrincipal();
-            Long dormID = dorm.get().getId();
+            Integer dormID = dorm.get().getId();
 
             if (!userDormService.isUserAssignedToDorm(user.getId(), dormID)) {
                 response.sendRedirect("/login_page?errorDorm=User is not assigned to this dorm");

@@ -28,7 +28,7 @@ public class UserDormService {
 
     }
     @Transactional
-    public boolean isUserAssignedToDorm(Long userId, Long dormID) {
+    public boolean isUserAssignedToDorm(Integer userId, Integer dormID) {
         User user = userRepository.findById(userId).orElseThrow(() -> new EntityNotFoundException("User not found"));
         Dorm dorm = organizationRepository.findById(dormID).orElseThrow(() -> new EntityNotFoundException ("Dorm not found"));
         user.getDorms();
@@ -37,7 +37,7 @@ public class UserDormService {
     }
 
     @Transactional
-    public void addUserToDorm(Long userId, Long dormID) {
+    public void addUserToDorm(Integer userId, Integer dormID) {
         User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
         Dorm dorm = organizationRepository.findById(dormID).orElseThrow(() -> new RuntimeException("Dorm not found"));
 
@@ -50,7 +50,7 @@ public class UserDormService {
     }
 
     @Transactional(readOnly = true)
-    public List<Long> getDormIdsForUser(Long userId) {
+    public List<Integer> getDormIdsForUser(Integer userId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new EntityNotFoundException("User not found"));
 
@@ -62,7 +62,7 @@ public class UserDormService {
     }
 
     @Transactional(readOnly = true)
-    public List<Dorm> getDormsForUser(Long userId) {
+    public List<Dorm> getDormsForUser(Integer userId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new EntityNotFoundException("User not found"));
 

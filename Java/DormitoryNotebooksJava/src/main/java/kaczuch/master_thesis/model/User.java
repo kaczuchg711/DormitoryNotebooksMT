@@ -10,12 +10,16 @@ import java.util.Set;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column( columnDefinition = "int")
+    private Integer id;
     private String email;
     private String password;
+    @Column(length = 30)
     private String role;
+    @Column(length = 30)
     private String first_name;
+    @Column(length = 150)
     private String last_name;
     @Column(columnDefinition = "VARCHAR(10)")
     private Integer roomNumber;
@@ -103,9 +107,28 @@ public class User {
         this.role = role;
         this.first_name = first_name;
         this.last_name = last_name;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
     }
 
-    public User(Long id, String email, String password, String role, String first_name, String last_name, Set<Organization> organizations, Set<Dorm> dorms) {
+    public User(Integer id, String email, String password, String role, String first_name, String last_name, Set<Organization> organizations, Set<Dorm> dorms) {
         this.email = email;
         this.password = password;
         this.role = role;
@@ -115,11 +138,11 @@ public class User {
         this.dorms = dorms;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

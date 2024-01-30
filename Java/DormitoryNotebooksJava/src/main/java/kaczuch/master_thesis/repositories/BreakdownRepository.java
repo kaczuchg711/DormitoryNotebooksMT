@@ -10,5 +10,5 @@ import java.util.Optional;
 @Repository
 
 public interface BreakdownRepository extends JpaRepository<Breakdown, Integer> {
-    Optional<Breakdown> findById(Long id);
+    Optional<Breakdown> findById(Integer id);
 }

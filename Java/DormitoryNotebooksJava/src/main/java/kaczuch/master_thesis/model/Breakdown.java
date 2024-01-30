@@ -10,7 +10,8 @@ public class Breakdown {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id;
+    @Column( columnDefinition = "int")
+    private Integer id;
 
     @Column(length = 600)
     private String description;
@@ -41,11 +42,11 @@ public class Breakdown {
         super();
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 

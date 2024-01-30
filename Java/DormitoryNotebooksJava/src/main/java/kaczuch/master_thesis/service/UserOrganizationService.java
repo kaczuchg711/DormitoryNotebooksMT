@@ -25,7 +25,7 @@ public class UserOrganizationService {
     }
 
     @Transactional
-    public void addUserToOrganization(Long userId, Long organizationId) {
+    public void addUserToOrganization(Integer userId, Integer organizationId) {
         User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("Dorm not found"));
         Organization organization = organizationRepository.findById(organizationId).orElseThrow(() -> new RuntimeException("Organization not found"));
 

@@ -32,7 +32,7 @@ public class ItemToRentService {
         return itemToRentRepository.save(newItem);
     }
 
-    public List<String> findDistinctNamesByDormId(Long dormId)
+    public List<String> findDistinctNamesByDormId(Integer dormId)
     {
         return itemToRentRepository.findDistinctNamesByDormId(dormId);
     }
@@ -41,16 +41,16 @@ public class ItemToRentService {
         return itemToRentRepository.findAll();
     }
 
-    public List<ItemToRent> getItemsByNameAndDormId (String filterName,Long dormId)
+    public List<ItemToRent> getItemsByNameAndDormId (String filterName,Integer dormId)
     {
         return itemToRentRepository.findByNameContainingAndDormId(filterName, dormId);
     }
 
-    public List<ItemToRent> getAvailableItemsInDormByName(Long dormId, String itemName) {
+    public List<ItemToRent> getAvailableItemsInDormByName(Integer dormId, String itemName) {
         return itemToRentRepository.findAvailableItemsByNameAndDormId(dormId, itemName);
     }
 
-    public Optional<ItemToRent> findById(Long id)
+    public Optional<ItemToRent> findById(Integer id)
     {
         return itemToRentRepository.findById(id);
     }

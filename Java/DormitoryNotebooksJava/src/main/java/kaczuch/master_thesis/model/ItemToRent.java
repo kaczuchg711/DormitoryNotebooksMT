@@ -5,8 +5,9 @@ import jakarta.persistence.*;
 @Entity
 public class ItemToRent {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column( columnDefinition = "int")
+    private Integer id;
 
     @Column(columnDefinition = "VARCHAR(255)")
     private String name;
@@ -20,11 +21,11 @@ public class ItemToRent {
     @JoinColumn(name = "dorm_id")
     private Dorm dorm;
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 

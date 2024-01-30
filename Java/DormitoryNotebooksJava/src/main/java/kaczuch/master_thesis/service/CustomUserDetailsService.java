@@ -23,13 +23,11 @@ public class CustomUserDetailsService implements UserDetailsService {
 		if (user == null) {
 			throw new UsernameNotFoundException("user not found");
 		}
-
-
 		return new CustomUserDetail(user);
 
 	}
 
-	public Optional<User> findById(Long id)
+	public Optional<User> findById(Integer id)
 	{
 		return userRepository.findById(id);
 	}

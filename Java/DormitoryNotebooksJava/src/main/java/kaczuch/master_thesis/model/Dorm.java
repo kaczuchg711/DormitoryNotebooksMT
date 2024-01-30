@@ -9,8 +9,10 @@ import java.util.Set;
 public class Dorm {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column( columnDefinition = "int")
+    private Integer id;
+    @Column( length = 60)
     private String name;
     @ManyToMany(mappedBy = "dorms")
     private Set<Organization> organizations;
@@ -36,11 +38,11 @@ public class Dorm {
         organization.getDorms().remove(this);
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
