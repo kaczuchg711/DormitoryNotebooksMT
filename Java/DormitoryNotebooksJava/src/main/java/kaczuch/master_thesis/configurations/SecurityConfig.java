@@ -35,36 +35,18 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         String[] pagesRequireLogIn = {
-                "/user_dashboard",
-                "/breakdowns",
-                "/remove_breakdown",
-                "/request_breakdown"};
-
+                "/user_dashboard", "/breakdowns", "/remove_breakdown", "/request_breakdown"};
         String[] pagesNotRequireLogIn = {
-                "/css/**",
-                "/img/**",
-                "/js/**",
-                "/registration",
-                "/add_user_to_organization",
-                "/add_user_to_dorm",
-                "/set_organization",
-                "/organizations",
-                "/login_page",
-                "/create_user",
-                "/add_item_to_rent"
+                "/css/**", "/img/**", "/js/**", "/registration", "/add_user_to_organization", "/add_user_to_dorm", "/set_organization", "/organizations", "/login_page", "/create_user", "/add_item_to_rent"
         };
-
 
         http.csrf(c -> c.disable())
                 .authorizeHttpRequests(request ->
                 {
                     request
-                            .requestMatchers("/admin-page")
-                            .hasAuthority("ADMIN")
-                            .requestMatchers(pagesRequireLogIn)
-                            .hasAnyAuthority("USER", "PORTER")
-                            .requestMatchers(pagesNotRequireLogIn)
-                            .permitAll()
+                            .requestMatchers("/admin-page").hasAuthority("ADMIN")
+                            .requestMatchers(pagesRequireLogIn).hasAnyAuthority("USER", "PORTER")
+                            .requestMatchers(pagesNotRequireLogIn).permitAll()
                             .anyRequest().authenticated();
                 })
                 .formLogin(form -> form.loginPage("/login_page").loginProcessingUrl("/login")
@@ -73,7 +55,6 @@ public class SecurityConfig {
                         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                         .logoutSuccessUrl("/login_page").permitAll());
         return http.build();
-
     }
 
     @Autowired

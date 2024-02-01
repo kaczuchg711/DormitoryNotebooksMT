@@ -32,4 +32,9 @@ public class CustomUserDetailsService implements UserDetailsService {
 		return userRepository.findById(id);
 	}
 
+	public Optional<String> findUserRole(Integer userID)
+	{
+		return userRepository.findUserRole(userID);
+	}
+
 }

@@ -1,14 +1,12 @@
 package kaczuch.master_thesis.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import kaczuch.master_thesis.model.Breakdown;
 import kaczuch.master_thesis.model.Dorm;
 import kaczuch.master_thesis.model.User;
 import kaczuch.master_thesis.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +17,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import static kaczuch.master_thesis.controller.AAATestController.printRequestParameters;
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 @Controller
 public class BreakdownsController {
@@ -31,23 +28,18 @@ public class BreakdownsController {
 
     @Autowired
     private CustomUserDetailsService customUserDetailsService;
-
+    @Autowired
+    private DormService dormService;
 
 
     @Autowired
     private UserDormService userDormService;
 
     @GetMapping("/breakdowns")
-    public ModelAndView giveBreakdownView() {
-        Integer currentUserId = null;
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null && authentication.isAuthenticated()) {
-            Object principal = authentication.getPrincipal();
-            if (principal instanceof CustomUserDetail) {
-                CustomUserDetail userDetails = (CustomUserDetail) principal;
-                currentUserId = userDetails.getId();
-            }
-        }
+    public ModelAndView giveBreakdownView(HttpServletRequest request) throws Exception {
+        HttpSession session = request.getSession();
+        Integer currentUserId = (Integer) session.getAttribute("userID");
+
 
         List<Integer> userDormIds = userDormService.getDormIdsForUser(currentUserId);
 
@@ -79,16 +71,13 @@ public class BreakdownsController {
             return map;
         }).collect(Collectors.toList());
 
-        String loggedUserRole = null;
-        if (authentication != null && authentication.isAuthenticated()) {
-            Object principal = authentication.getPrincipal();
-            if (principal instanceof UserDetails) {
-                CustomUserDetail userDetails = (CustomUserDetail) principal;
-                loggedUserRole = userDetails.getRole();
-            }
-        }
-        boolean isPorter = Objects.equals(loggedUserRole, "PORTER");
+        Optional<String> loggedUserRoleOPT = customUserDetailsService.findUserRole(currentUserId);
+        String loggedUserRole;
+        if (loggedUserRoleOPT.isPresent())
+            loggedUserRole = loggedUserRoleOPT.get();
+        else throw new Exception("User role not found");
 
+        boolean isPorter = Objects.equals(loggedUserRole, "PORTER");
         ModelAndView modelAndView = new ModelAndView("breakdowns");
         modelAndView.addObject("isPorter", isPorter);
         modelAndView.addObject("data", breakdownData);
@@ -107,35 +96,30 @@ public class BreakdownsController {
     @PostMapping("/request_breakdown")
     public ModelAndView requestBreakdown(HttpServletRequest request) throws Exception {
         String description = request.getParameter("description");
-        CustomUserDetail userDetails;
-        Integer currentUserId;
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null && authentication.isAuthenticated()) {
-            Object principal = authentication.getPrincipal();
-            if (principal instanceof CustomUserDetail) {
-                userDetails = (CustomUserDetail) principal;
-                currentUserId = userDetails.getId();
-                //todo get dorm where user is logged not is assigned
-                List<Dorm> userDorms = userDormService.getDormsForUser(currentUserId);
 
-                Dorm userDorm = userDorms.get(0);
+        HttpSession session = request.getSession();
+        Integer currentUserId = (Integer) session.getAttribute("userID");
+        Integer dormID = (Integer) session.getAttribute("dormID");
 
-                customUserDetailsService.findById(currentUserId);
+        Optional<Dorm> loggedDormOpt = dormService.findById(dormID);
+        Dorm loggedDorm;
+        if (loggedDormOpt.isPresent())
+            loggedDorm = loggedDormOpt.get();
+        else throw new Exception("Dorm nor found");
+        System.out.println("AAA");
+        System.out.println("AAA");
+        System.out.println(currentUserId);
+        System.out.println("AAA");
+        System.out.println("AAA");
+        Optional<User> userOpt = customUserDetailsService.findById(currentUserId);
+        User user;
+        if (userOpt.isPresent()) {
+            user = userOpt.get();
+        } else throw new Exception("User nor found");
 
-                Optional<User> userOpt = customUserDetailsService.findById(currentUserId);
-                User user;
-                if (userOpt.isPresent()) {
-                    user = userOpt.get();
-                } else throw new Exception("User nor found");
+        Breakdown breakdown = new Breakdown(description, false, loggedDorm, user, new Date());
+        breakdownService.save(breakdown);
 
-                Breakdown breakdown = new Breakdown(description, false, userDorm, user, new Date());
-
-                breakdownService.save(breakdown);
-
-            } else throw new Exception("Improper user in request_breakdown");
-        }
-
-        printRequestParameters(request);
         return new ModelAndView("redirect:/breakdowns");
     }
 }

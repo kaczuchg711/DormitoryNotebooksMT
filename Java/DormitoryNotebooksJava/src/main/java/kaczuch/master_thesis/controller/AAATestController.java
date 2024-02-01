@@ -126,16 +126,4 @@ public class AAATestController {
             System.out.println(paramName + ": " + paramValue);
         }
     }
-
-    public static CustomUserDetail getLoggedUser() throws Exception {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null && authentication.isAuthenticated()) {
-            Object principal = authentication.getPrincipal();
-            if (principal instanceof CustomUserDetail) {
-                return (CustomUserDetail) principal;
-            }
-        }
-        throw new Exception("Logged user not found");
-    }
-
 }

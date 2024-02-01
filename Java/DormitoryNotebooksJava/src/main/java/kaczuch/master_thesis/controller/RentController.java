@@ -2,6 +2,8 @@ package kaczuch.master_thesis.controller;
 
 import ch.qos.logback.core.AppenderBase;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+import jakarta.websocket.Session;
 import kaczuch.master_thesis.model.*;
 import kaczuch.master_thesis.repositories.ItemToRentRepository;
 import kaczuch.master_thesis.repositories.RentalRepository;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import kaczuch.master_thesis.model.RentalDetailsDTO;
 
+import java.net.URLEncoder;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
@@ -48,23 +51,18 @@ public class RentController {
 
     @GetMapping("/rent_page")
     public ModelAndView handleRentRequest(HttpServletRequest request) throws Exception {
-
-
+        HttpSession session = request.getSession();
         String itemNameToRent = request.getParameter("item");
-        CustomUserDetail userDetails;
-        Integer currentUserId;
+        System.out.println("AAAAAAAAAA");
+        System.out.println("AAAAAAAAAA");
+        System.out.println("AAAAAAAAAA");
+        System.out.println(itemNameToRent);
+        System.out.println("AAAAAAAAAA");
+        System.out.println("AAAAAAAAAA");
+        Integer currentUserId = (Integer) session.getAttribute("userID");
+        Integer dormId = (Integer) session.getAttribute("dormID");
 
-        CustomUserDetail userDetail = getLoggedUser();
-        currentUserId = userDetail.getId();
-
-
-//      odo get dorm from user not from login
-
-        List<Dorm> userDorms = userDormService.getDormsForUser(currentUserId);
-        Dorm userDorm = userDorms.get(0);
-        Integer dormId = userDorm.getId();
-
-        List<Rental> rentals = rentalService.findAllRentInDorm(userDorm.getId(), itemNameToRent);
+        List<Rental> rentals = rentalService.findAllRentInDorm(dormId, itemNameToRent);
         List<RentalDetailsDTO> rentalDetails = rentals.stream().map(rental -> {
             User user = rental.getUser();
             RentalDetailsDTO dto = new RentalDetailsDTO();
@@ -99,8 +97,15 @@ public class RentController {
 
         Integer selectedItemId = Integer.valueOf(request.getParameter("selectedItem"));
 
+        Integer userID = (Integer) request.getSession().getAttribute("userID");
+        Optional<User> userOPT = userService.findById(userID);
+        User user;
+        if (userOPT.isPresent())
+            user = userOPT.get();
+        else throw new Exception("User not found");
 
-        CustomUserDetail userDetail = getLoggedUser();
+
+        CustomUserDetail userDetail = new CustomUserDetail(user);
 
 
         Optional<ItemToRent> optionalItem = itemService.findById(selectedItemId);
@@ -114,15 +119,15 @@ public class RentController {
         item.setAvailable(false);
         itemToRentRepository.save(item);
         rentalRepository.save(rental);
-
-
-        return new ModelAndView("redirect:/rent_page?item=" + item.getName());
+        String parameterValue = item.getName();
+        String encodedValue = URLEncoder.encode(parameterValue, "UTF-8");
+        String redirect_url = "redirect:/rent_page?item=" + parameterValue;
+        return new ModelAndView(redirect_url);
     }
 
     @PostMapping("/return_item")
     public ModelAndView returnItem(HttpServletRequest request, ModelAndView modelAndView) throws Exception {
-        CustomUserDetail customUserDetail = getLoggedUser();
-        Integer userId = customUserDetail.getId();
+        Integer userId = (Integer) request.getSession().getAttribute("userID");
         String itemName = request.getParameter("item_name");
 
         if (rentalService.findAllRentConcreteItemRentByUser(userId, itemName).size() != 1)

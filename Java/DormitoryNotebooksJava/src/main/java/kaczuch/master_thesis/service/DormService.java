@@ -18,4 +18,9 @@ public class DormService {
     public Optional<Dorm> getDormByName(String name) {
         return dormRepository.findByName(name);
     }
+
+    public Optional<Dorm> findById(Integer dormId) {
+        return dormRepository.findById(dormId);
+    }
+
 }

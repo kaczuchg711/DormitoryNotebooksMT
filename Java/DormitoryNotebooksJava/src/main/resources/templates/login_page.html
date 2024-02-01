@@ -20,10 +20,14 @@
             <div class="col-md-8 login-form">
                 <div th:text="${errorDorm}"></div>
                 <form th:action="@{/login}" method="post">
-                <label>Akademik</label><br>
-                <select name="dorm" id="dorm">
-                    <option th:id="${dorm}" th:each="dorm : ${dormNames}" th:text="${dorm}" th:value="${dorm}"></option>
-                </select>
+                    <label>Akademik</label><br>
+                    <input type="hidden" name="organization_acronym" th:value="${organization_acronym}">
+                    <select name="dorm" id="dorm">
+                        <option th:id="${dorm}"
+                                th:each="dorm : ${dormNames}"
+                                th:text="${dorm}"
+                                th:value="${dorm}"></option>
+                    </select>
                     <div class="message" th:if="${param.logout}">
                         Logout Successfuly
                     </div>

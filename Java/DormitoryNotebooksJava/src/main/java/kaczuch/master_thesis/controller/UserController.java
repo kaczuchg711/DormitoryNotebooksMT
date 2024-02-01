@@ -60,10 +60,12 @@ public class UserController {
     }
 
     @GetMapping({"/login_page", "/"})
-    public String login_page(@RequestParam(name = "errorDorm", required = false) String errorDorm, Model model, HttpSession session, RedirectAttributes redirectAttributes, HttpServletRequest request) {
+    public String login_page(@RequestParam(name = "errorDorm", required = false) String errorDorm, Model model,
+                             HttpSession session, RedirectAttributes redirectAttributes, HttpServletRequest request) {
 
         Optional<Organization> organization = check_organization_choice(model, session, redirectAttributes);
-        if (organization == null) return "redirect:/organizations";
+        if (organization == null)
+            return "redirect:/organizations";
 
         get_dorms_assigned_to_organization(model, organization);
 
@@ -103,7 +105,7 @@ public class UserController {
         return organization;
     }
 
-    @GetMapping("/organizations")  // Map this method to handle requests to /organizations
+    @GetMapping("/organizations")
     public String handleOrganizationsUrlRequest(Model model, ModelAndView modelAndView) {
         modelAndView.addObject("stefan", "Jestem stefan");
         List<Organization> organizations = organizationRepository.findAll();
@@ -111,9 +113,10 @@ public class UserController {
         return "organizations";
     }
 
-    @PostMapping("/set_organization")  // Map this method to handle requests to /organizations
+    @PostMapping("/set_organization")
     public ModelAndView set_organization(@RequestParam("organization") String organizationAcronym, HttpSession session) {
-        Optional<Organization> organization = organizationRepository.findByAcronym(organizationAcronym);
+        Optional<Organization> organization =
+                organizationRepository.findByAcronym(organizationAcronym);
         if (organization.isPresent()) {
             session.setAttribute("organization_id", organization.get().getId());
             session.setAttribute("organization_acronym", organizationAcronym);
@@ -126,13 +129,13 @@ public class UserController {
     @GetMapping("user_dashboard")
     public String userPage(Model model, HttpServletRequest request) throws Exception {
         CustomUserDetail userDetails;
-        Integer currentUserId;
+        Integer currentUserId = (Integer) request.getSession().getAttribute("userID");
+
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.isAuthenticated()) {
             Object principal = authentication.getPrincipal();
             if (principal instanceof CustomUserDetail) {
                 userDetails = (CustomUserDetail) principal;
-                currentUserId = userDetails.getId();
                 // Get dorm where user is logged not is assigned
                 List<Dorm> userDorms = userDormService.getDormsForUser(currentUserId);
                 Dorm userDorm = userDorms.get(0);
